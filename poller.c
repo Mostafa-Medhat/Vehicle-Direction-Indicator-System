@@ -36,6 +36,20 @@ void StopPolling(void)
 
 void SetPollingTime(int polling_time)
 {
-	polling_counter = polling_time/50;
-
+	polling_counter = polling_time/(50*2);
+//	polling_counter = 3;
+	/*
+	 *
+	 * 1000000/256=3906.25hz
+	 *
+	 * ticks per second = 3906.25
+	 *
+	 * ticks per ms = 3906.25/1000
+	 *
+	 * ticks per 100ms = 390.625 = 3 * 130
+	 *
+	 *
+	 *
+	 *
+	 * */
 }

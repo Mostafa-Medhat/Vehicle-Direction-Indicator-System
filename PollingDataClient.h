@@ -15,10 +15,10 @@
 
 void Handle_data(States_GroupType *Sates_Ptr);
 void State_Handler(void);
-void LEDS_Off(void);
 void RightLED_Blink(void);
 void LeftLED_Blink(void);
 void BothLEDS_Blink(void);
+void NoLED_Blink(void);
 
 
 

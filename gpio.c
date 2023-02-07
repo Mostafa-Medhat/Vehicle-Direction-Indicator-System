@@ -1,4 +1,4 @@
- /******************************************************************************
+/******************************************************************************
  *
  * Module: GPIO
  *
@@ -12,8 +12,9 @@
 
 #include "gpio.h"
 #include "common_macros.h" /* To use the macros like SET_BIT */
-#include <avr/io.h> /* To use the IO Ports Registers */
+#include "avr/io.h" /* To use the IO Ports Registers */
 #include "DIO_config.h"
+#include "avr/iom64.h"
 
 /*
  * Description :
@@ -74,6 +75,26 @@ void GPIO_setupPinDirection(uint8 port_num, uint8 pin_num, GPIO_PinDirectionType
 			else
 			{
 				CLEAR_BIT(DDRD,pin_num);
+			}
+			break;
+		case PORTE_ID:
+			if(direction == PIN_OUTPUT)
+			{
+				SET_BIT(DDRE,pin_num);
+			}
+			else
+			{
+				CLEAR_BIT(DDRE,pin_num);
+			}
+			break;
+		case PORTF_ID:
+			if(direction == PIN_OUTPUT)
+			{
+				SET_BIT(DDRF,pin_num);
+			}
+			else
+			{
+				CLEAR_BIT(DDRF,pin_num);
 			}
 			break;
 		}
@@ -140,6 +161,26 @@ void GPIO_writePin(uint8 port_num, uint8 pin_num, uint8 value)
 			else
 			{
 				CLEAR_BIT(PORTD,pin_num);
+			}
+			break;
+		case PORTE_ID:
+			if(value == LOGIC_HIGH)
+			{
+				SET_BIT(PORTE,pin_num);
+			}
+			else
+			{
+				CLEAR_BIT(PORTE,pin_num);
+			}
+			break;
+		case PORTF_ID:
+			if(value == LOGIC_HIGH)
+			{
+				SET_BIT(PORTF,pin_num);
+			}
+			else
+			{
+				CLEAR_BIT(PORTF,pin_num);
 			}
 			break;
 		}
@@ -209,6 +250,26 @@ uint8 GPIO_readPin(uint8 port_num, uint8 pin_num)
 				pin_value = LOGIC_LOW;
 			}
 			break;
+		case PORTE_ID:
+			if(BIT_IS_SET(PINE,pin_num))
+			{
+				pin_value = LOGIC_HIGH;
+			}
+			else
+			{
+				pin_value = LOGIC_LOW;
+			}
+			break;
+		case PORTF_ID:
+			if(BIT_IS_SET(PINF,pin_num))
+			{
+				pin_value = LOGIC_HIGH;
+			}
+			else
+			{
+				pin_value = LOGIC_LOW;
+			}
+			break;
 		}
 	}
 
@@ -249,6 +310,12 @@ void GPIO_setupPortDirection(uint8 port_num, GPIO_PortDirectionType direction)
 		case PORTD_ID:
 			DDRD = direction;
 			break;
+		case PORTE_ID:
+			DDRE = direction;
+			break;
+		case PORTF_ID:
+			DDRF = direction;
+			break;
 		}
 	}
 }
@@ -287,6 +354,12 @@ void GPIO_writePort(uint8 port_num, uint8 value)
 		case PORTD_ID:
 			PORTD = value;
 			break;
+		case PORTE_ID:
+			PORTE = value;
+			break;
+		case PORTF_ID:
+			PORTF = value;
+			break;
 		}
 	}
 }
@@ -324,6 +397,12 @@ uint8 GPIO_readPort(uint8 port_num)
 			break;
 		case PORTD_ID:
 			value = PIND;
+			break;
+		case PORTE_ID:
+			value = PINE;
+			break;
+		case PORTF_ID:
+			value = PINF;
 			break;
 		}
 	}

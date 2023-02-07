@@ -18,7 +18,7 @@ void Timer2_Init_CTC_Mode(unsigned char tick)
 	 * 3. No need for OC0 in this example so COM00=0 & COM01=0
 	 * 4. clock = F_CPU/8 CS22=0 CS21=1 CS20=0
 	 */
-	TCCR2 = (1<<FOC2) | (1<<WGM21)  | (1<<CS21);
+	TCCR2 = (1<<FOC2) | (1<<WGM21) | (1<<CS21);
 }
 
 

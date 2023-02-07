@@ -11,9 +11,9 @@
 
 typedef struct
 {
-	unsigned char 	ignition_key;
-	unsigned char 	leftIndicator;
+	unsigned char ignition_key;
 	unsigned char	rightIndicator;
+	unsigned char leftIndicator;
 	unsigned char	hazard_Btn;
 }States_GroupType;
 
