@@ -22,13 +22,14 @@ void Handle_data(States_GroupType *Sates_Ptr)
 	LCD_moveCursor(0, 0);
 	LCD_displayString("H:"); //hazard button
 	LCD_intgerToString(Sates_Ptr->hazard_Btn);
-	LCD_displayString(" L:");	//left indicator
-	LCD_intgerToString(Sates_Ptr->leftIndicator);
-	LCD_moveCursor(1, 0);
-	LCD_displayString(" R:");	//right indicator
-	LCD_intgerToString(Sates_Ptr->rightIndicator);
 	LCD_displayString(" I:");	//ignition button
 	LCD_intgerToString(Sates_Ptr->ignition_key);
+	LCD_moveCursor(1, 0);
+	LCD_displayString("L:");	//left indicator
+	LCD_intgerToString(Sates_Ptr->leftIndicator);
+	LCD_displayString(" R:");	//right indicator
+	LCD_intgerToString(Sates_Ptr->rightIndicator);
+
 
 	if(Sates_Ptr->ignition_key==TRUE)
 	{
