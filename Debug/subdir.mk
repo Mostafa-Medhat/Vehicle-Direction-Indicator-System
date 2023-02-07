@@ -6,42 +6,42 @@
 C_SRCS += \
 ../DIO_config.c \
 ../PollingDataClient.c \
+../Timer1_PWM.c \
 ../TimerCompareMode.c \
 ../device.c \
 ../gpio.c \
 ../lcd.c \
 ../main.c \
-../poller.c \
-../pwm.c 
+../poller.c 
 
 OBJS += \
 ./DIO_config.o \
 ./PollingDataClient.o \
+./Timer1_PWM.o \
 ./TimerCompareMode.o \
 ./device.o \
 ./gpio.o \
 ./lcd.o \
 ./main.o \
-./poller.o \
-./pwm.o 
+./poller.o 
 
 C_DEPS += \
 ./DIO_config.d \
 ./PollingDataClient.d \
+./Timer1_PWM.d \
 ./TimerCompareMode.d \
 ./device.d \
 ./gpio.d \
 ./lcd.d \
 ./main.d \
-./poller.d \
-./pwm.d 
+./poller.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 %.o: ../%.c subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega64 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
