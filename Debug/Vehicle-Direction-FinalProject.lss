@@ -1587,8 +1587,6 @@ void Handle_data(States_GroupType *Sates_Ptr)
      c0e:	80 93 98 00 	sts	0x0098, r24
 	}
 
-
-
 	State_Handler();
      c12:	0e 94 10 06 	call	0xc20	; 0xc20 <State_Handler>
 }
@@ -1660,9 +1658,7 @@ void State_Handler(void)
 				BothLEDS_Blink();
      c7e:	0e 94 6b 08 	call	0x10d6	; 0x10d6 <BothLEDS_Blink>
 				break;
-
 		}
-
 }
      c82:	0f 90       	pop	r0
      c84:	0f 90       	pop	r0
