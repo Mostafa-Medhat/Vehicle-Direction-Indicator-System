@@ -60,7 +60,7 @@ main-build: Vehicle-Direction-FinalProject.elf secondary-outputs
 Vehicle-Direction-FinalProject.elf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,Vehicle-Direction-FinalProject.map -mmcu=atmega64 -o "Vehicle-Direction-FinalProject.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,Vehicle-Direction-FinalProject.map -mmcu=atmega32 -o "Vehicle-Direction-FinalProject.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -72,7 +72,7 @@ Vehicle-Direction-FinalProject.lss: Vehicle-Direction-FinalProject.elf makefile 
 
 sizedummy: Vehicle-Direction-FinalProject.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega64 Vehicle-Direction-FinalProject.elf
+	-avr-size --format=avr --mcu=atmega32 Vehicle-Direction-FinalProject.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
