@@ -8,12 +8,13 @@
 //#define DIO_NUM_OF_GROUP_CHANNELS_INPUTS	(2U)
 
 #define HAZARD_BUTTON_ID  			0
-#define LEFT_INDICATOR_BUTTON_ID 	1
-#define RIGHT_INDICATOR_BUTTON_ID 	2
+#define RIGHT_INDICATOR_BUTTON_ID 	1
+#define LEFT_INDICATOR_BUTTON_ID 	2
 #define IGNITION_SWICH_ID 			3
 #define RIGHT_LED_ID 				4
 #define LEFT_LED_ID 				5
 
+#define NUM_OF_INPUTS				4
 
 
 #endif

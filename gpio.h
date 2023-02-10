@@ -20,13 +20,15 @@
 /*******************************************************************************
  *                                Definitions                                  *
  *******************************************************************************/
-#define NUM_OF_PORTS           4
+#define NUM_OF_PORTS           6
 #define NUM_OF_PINS_PER_PORT   8
 
 #define PORTA_ID               0
 #define PORTB_ID               1
 #define PORTC_ID               2
 #define PORTD_ID               3
+#define PORTE_ID               4
+#define PORTF_ID               5
 
 #define PIN0_ID                0
 #define PIN1_ID                1
@@ -127,8 +129,8 @@ void DIO_init(void);
 
 
 extern const DIO_channel_config dio_config_array[DIO_NUM_OF_CHANNELS];
-extern const ChannelGroupType channel_group_var_input;
-extern const ChannelGroupType channel_group_var;
+//extern const ChannelGroupType channel_group_var_input;
+//extern const ChannelGroupType channel_group_var;
 
 
 #endif /* GPIO_H_ */

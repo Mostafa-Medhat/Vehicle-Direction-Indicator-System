@@ -4,16 +4,17 @@
  *      Author: Mostafa
  */
 #include "PollingDataClient.h"
-#include "pwm.h"
 #include "std_types.h"
 #include "device.h"
 #include "lcd.h"
 #include "gpio.h"
 #include "DIO_config.h"
-#include <stdint.h>
 #include <util/delay.h>
+#include "Timer1_PWM.h"
 
-uint8_t state;
+#define WAIT_TIME_PER_DUTY_CHANGE	30
+//uint8_t ignitionState = LOGIC_LOW;
+unsigned char state;
 
 void Handle_data(States_GroupType *Sates_Ptr)
 {
@@ -21,14 +22,13 @@ void Handle_data(States_GroupType *Sates_Ptr)
 	LCD_moveCursor(0, 0);
 	LCD_displayString("H:"); //hazard button
 	LCD_intgerToString(Sates_Ptr->hazard_Btn);
-	LCD_displayString(" I:");	//ignition button
-	LCD_intgerToString(Sates_Ptr->ignition_key);
-	LCD_moveCursor(1, 0);
-	LCD_displayString("L:");	//left indicator
+	LCD_displayString(" L:");	//left indicator
 	LCD_intgerToString(Sates_Ptr->leftIndicator);
+	LCD_moveCursor(1, 0);
 	LCD_displayString(" R:");	//right indicator
 	LCD_intgerToString(Sates_Ptr->rightIndicator);
-
+	LCD_displayString(" I:");	//ignition button
+	LCD_intgerToString(Sates_Ptr->ignition_key);
 
 	if(Sates_Ptr->ignition_key==TRUE)
 	{
@@ -40,21 +40,20 @@ void Handle_data(States_GroupType *Sates_Ptr)
 		{
 			state = LEFT_INDICATOR;
 		}
-		else
-		{
+		else{
 			state = NO_INDICATOR;
 		}
 	}
-	else if(Sates_Ptr->ignition_key==FALSE)
-	{
+	else{
 		state = NO_INDICATOR;
 	}
-
 
 	if(Sates_Ptr->hazard_Btn==TRUE)
 	{
 		state = HAZARD_BUTTON;
 	}
+
+
 
 	State_Handler();
 }
@@ -62,53 +61,73 @@ void Handle_data(States_GroupType *Sates_Ptr)
 void State_Handler(void)
 {
 	switch(state)
-		{
-			case NO_INDICATOR:
-				LEDS_Off();
-				break;
-			case RIGHT_INDICATOR:
-				RightLED_Blink();
-				break;
-			case LEFT_INDICATOR:
-				LeftLED_Blink();
-				break;
-			case HAZARD_BUTTON:
-				BothLEDS_Blink();
-				break;
-		}
+	{
+	case NO_INDICATOR:
+		NoLED_Blink();
+		break;
+	case RIGHT_INDICATOR:
+		RightLED_Blink();
+		break;
+	case LEFT_INDICATOR:
+		LeftLED_Blink();
+		break;
+	case HAZARD_BUTTON:
+		BothLEDS_Blink();
+		break;
+
+	}
+
 }
 
 
-void LEDS_Off(void)
-{
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_LOW);
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
-}
 void RightLED_Blink(void)
 {
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_HIGH);
-	_delay_ms(500);
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_LOW);
-	_delay_ms(500);
+	int i = 0;
+	timer1_SetPWM_A(0);
+	for(i = 2 ; i < 17 ; i++){
+
+		timer1_SetPWM_B((i*5));
+		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+	}
+	for(i = 16 ; i > 1 ; i--){
+
+		timer1_SetPWM_B((i*5));
+		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+	}
 }
 
 void LeftLED_Blink(void)
 {
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_HIGH);
-	_delay_ms(500);
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
-	_delay_ms(500);
+	int i = 0;
+	timer1_SetPWM_B(0);
+	for(i = 2 ; i < 17 ; i++){
+		timer1_SetPWM_A((i*5));
+
+		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+	}
+	for(i = 16 ; i > 1 ; i--){
+		timer1_SetPWM_A((i*5));
+
+		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+	}
 }
 
 void BothLEDS_Blink(void)
 {
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_HIGH);
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_HIGH);
-	_delay_ms(500);
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_LOW);
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
-	_delay_ms(500);
+	int i = 0;
+	for(i = 2 ; i < 17 ; i++){
+		timer1_SetPWM_A_B(i*5);
+		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+	}
+	for(i = 16 ; i > 1 ; i--){
+		timer1_SetPWM_A_B(i*5);
+		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+	}
 
 }
 
+
+void NoLED_Blink(void){
+	timer1_SetPWM_A_B(0);
+}
 

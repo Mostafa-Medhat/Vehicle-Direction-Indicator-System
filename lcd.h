@@ -29,13 +29,13 @@
 #endif
 
 /* LCD HW Ports and Pins Ids */
-#define LCD_RS_PORT_ID                 PORTC_ID
+#define LCD_RS_PORT_ID                 PORTD_ID
 #define LCD_RS_PIN_ID                  PIN0_ID
 
-#define LCD_E_PORT_ID                  PORTC_ID
+#define LCD_E_PORT_ID                  PORTD_ID
 #define LCD_E_PIN_ID                   PIN2_ID
 
-#define LCD_DATA_PORT_ID               PORTC_ID
+#define LCD_DATA_PORT_ID               PORTD_ID
 
 #if (LCD_DATA_BITS_MODE == 4)
 
