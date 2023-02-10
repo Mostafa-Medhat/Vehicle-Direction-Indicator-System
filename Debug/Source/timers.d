@@ -1,5 +1,4 @@
-device.o device.o: ../device.c ../device.h ../gpio.h ../std_types.h \
-  ../DIO_config.h \
+Source/timers.o Source/timers.o: ../Source/timers.c \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/FreeRTOS.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/FreeRTOSConfig.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/projdefs.h \
@@ -9,17 +8,9 @@ device.o device.o: ../device.c ../device.h ../gpio.h ../std_types.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/mpu_wrappers.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/list.h \
-  D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/timers.h \
+  D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/queue.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h \
-  ../common_macros.h
-
-../device.h:
-
-../gpio.h:
-
-../std_types.h:
-
-../DIO_config.h:
+  D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/timers.h
 
 D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/FreeRTOS.h:
 
@@ -39,8 +30,8 @@ D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Sour
 
 D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/list.h:
 
-D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/timers.h:
+D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/queue.h:
 
 D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h:
 
-../common_macros.h:
+D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/timers.h:

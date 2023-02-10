@@ -4,41 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../DIO_config.c \
-../PollingDataClient.c \
-../Timer1_PWM.c \
-../TimerCompareMode.c \
-../device.c \
-../gpio.c \
-../lcd.c \
-../main.c \
-../poller.c 
+../Source/portable/MemMang/heap_1.c 
 
 OBJS += \
-./DIO_config.o \
-./PollingDataClient.o \
-./Timer1_PWM.o \
-./TimerCompareMode.o \
-./device.o \
-./gpio.o \
-./lcd.o \
-./main.o \
-./poller.o 
+./Source/portable/MemMang/heap_1.o 
 
 C_DEPS += \
-./DIO_config.d \
-./PollingDataClient.d \
-./Timer1_PWM.d \
-./TimerCompareMode.d \
-./device.d \
-./gpio.d \
-./lcd.d \
-./main.d \
-./poller.d 
+./Source/portable/MemMang/heap_1.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-%.o: ../%.c subdir.mk
+Source/portable/MemMang/%.o: ../Source/portable/MemMang/%.c Source/portable/MemMang/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
 	avr-gcc -I"D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include" -I"D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\portable\GCC\ATMega323" -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega64 -DF_CPU=1000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
