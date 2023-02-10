@@ -28,8 +28,8 @@ TaskHandle_t task1ptr;
 void Task2_Func(void);
 TaskHandle_t task2ptr;
 
-void Task3_Func(void);
-TaskHandle_t task3ptr;
+//void Task3_Func(void);
+//TaskHandle_t task3ptr;
 
 int main(void)
 {
@@ -70,7 +70,8 @@ void Task1_Func(void){
 			CLEAR_BIT(PORTB,5);
 		}
 		//				CLEAR_BIT(PORTB,6);
-		vTaskDelay(pdMS_TO_TICKS( 50 ));
+		vTaskDelay(50/portTICK_PERIOD_MS);
+
 		//		CLEAR_BIT(PORTB,6);
 		//		vTaskDelay(pdMS_TO_TICKS( 25 ));
 
