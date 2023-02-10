@@ -8,7 +8,7 @@
 #include <avr/io.h>
 #include "Timer1_PWM.h"
 
-unsigned long TopValue;
+unsigned long TopValue = 0;
 
 void timer1_PWM_Init(void){
 	TCCR1A = (1 << COM1A1) | (1 << COM1B1) | (1<< WGM11);
