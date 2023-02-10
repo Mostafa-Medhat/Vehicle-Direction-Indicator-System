@@ -11,6 +11,7 @@
 #include "DIO_config.h"
 #include <util/delay.h>
 #include "Timer1_PWM.h"
+#include "FreeRTOS.h"
 
 #define WAIT_TIME_PER_DUTY_CHANGE	30
 //uint8_t ignitionState = LOGIC_LOW;
@@ -87,12 +88,12 @@ void RightLED_Blink(void)
 	for(i = 2 ; i < 17 ; i++){
 
 		timer1_SetPWM_B((i*5));
-		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
 	}
 	for(i = 16 ; i > 1 ; i--){
 
 		timer1_SetPWM_B((i*5));
-		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
 	}
 }
 
@@ -103,12 +104,12 @@ void LeftLED_Blink(void)
 	for(i = 2 ; i < 17 ; i++){
 		timer1_SetPWM_A((i*5));
 
-		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
 	}
 	for(i = 16 ; i > 1 ; i--){
 		timer1_SetPWM_A((i*5));
 
-		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
 	}
 }
 
@@ -117,11 +118,11 @@ void BothLEDS_Blink(void)
 	int i = 0;
 	for(i = 2 ; i < 17 ; i++){
 		timer1_SetPWM_A_B(i*5);
-		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
 	}
 	for(i = 16 ; i > 1 ; i--){
 		timer1_SetPWM_A_B(i*5);
-		_delay_ms(WAIT_TIME_PER_DUTY_CHANGE);
+//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
 	}
 
 }
