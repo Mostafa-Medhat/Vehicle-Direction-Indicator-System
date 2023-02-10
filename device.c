@@ -15,6 +15,9 @@ unsigned char data;
 
 #include<util/delay.h>
 
+unsigned char ignitionBtn_counter = 0;
+unsigned char rightBtn_counter = 0;
+unsigned char leftBtn_counter = 0;
 
 
 States_GroupType Get_Data(void)
@@ -38,7 +41,12 @@ States_GroupType Get_Data(void)
 
 
 	if(!GPIO_readPin(dio_config_array[RIGHT_INDICATOR_BUTTON_ID].port_id,dio_config_array[RIGHT_INDICATOR_BUTTON_ID].pin_num) && !GPIO_readPin(dio_config_array[IGNITION_SWICH_ID].port_id,dio_config_array[IGNITION_SWICH_ID].pin_num)){
-		vTaskDelay(pdMS_TO_TICKS( 50 ));
+
+//		vTaskDelay(1/portTICK_PERIOD_MS);
+//		vTaskDelay(pdMS_TO_TICKS( 5 ));
+//		if(rightBtn_counter % 5 == 0)
+//		{
+//		rightBtn_counter = 0;
 		if(!GPIO_readPin(dio_config_array[IGNITION_SWICH_ID].port_id,dio_config_array[IGNITION_SWICH_ID].pin_num)){
 			ButtonState.ignition_key = 1;
 			if(!GPIO_readPin(dio_config_array[RIGHT_INDICATOR_BUTTON_ID].port_id,dio_config_array[RIGHT_INDICATOR_BUTTON_ID].pin_num)){
@@ -52,9 +60,16 @@ States_GroupType Get_Data(void)
 			ButtonState.ignition_key = 0;
 			ButtonState.rightIndicator = 0;
 		}
+//		}
+//		else
+//		{
+//			rightBtn_counter++;
+//		}
 	}
 	else if(!GPIO_readPin(dio_config_array[LEFT_INDICATOR_BUTTON_ID].port_id,dio_config_array[LEFT_INDICATOR_BUTTON_ID].pin_num) && !GPIO_readPin(dio_config_array[IGNITION_SWICH_ID].port_id,dio_config_array[IGNITION_SWICH_ID].pin_num)){
-		vTaskDelay(pdMS_TO_TICKS( 50 ));
+//		vTaskDelay(50/portTICK_PERIOD_MS);
+//		vTaskDelay(pdMS_TO_TICKS( 5 ));
+
 		if(!GPIO_readPin(dio_config_array[IGNITION_SWICH_ID].port_id,dio_config_array[IGNITION_SWICH_ID].pin_num)){
 			ButtonState.ignition_key = 1;
 			if(!GPIO_readPin(dio_config_array[LEFT_INDICATOR_BUTTON_ID].port_id,dio_config_array[LEFT_INDICATOR_BUTTON_ID].pin_num)){
@@ -70,7 +85,9 @@ States_GroupType Get_Data(void)
 		}
 	}
 	else if(!GPIO_readPin(dio_config_array[IGNITION_SWICH_ID].port_id,dio_config_array[IGNITION_SWICH_ID].pin_num)){
-		vTaskDelay(pdMS_TO_TICKS( 50 ));
+//		vTaskDelay(50/portTICK_PERIOD_MS);
+//		vTaskDelay(pdMS_TO_TICKS( 5 ));
+
 		if(!GPIO_readPin(dio_config_array[IGNITION_SWICH_ID].port_id,dio_config_array[IGNITION_SWICH_ID].pin_num)){
 			ButtonState.ignition_key = 1;
 			ButtonState.rightIndicator = 0;
