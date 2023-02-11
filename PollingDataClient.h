@@ -17,7 +17,7 @@
 extern unsigned char ToggleLED;
 unsigned char rightIntnesity;
 
-//void Handle_data(States_GroupType *Sates_Ptr);
+void Handle_data(States_GroupType *Sates_Ptr);
 void State_Handler(void);
 void RightLED_Blink(void);
 void LeftLED_Blink(void);
