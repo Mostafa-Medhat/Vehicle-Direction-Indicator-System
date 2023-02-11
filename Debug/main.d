@@ -11,7 +11,7 @@ main.o main.o: ../main.c ../device.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/timers.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h \
   ../common_macros.h ../PollingDataClient.h ../std_types.h ../gpio.h \
-  ../DIO_config.h ../Timer1_PWM.h
+  ../DIO_config.h ../Timer1_PWM.h ../pwm_timer0.h ../pwm_timer2.h
 
 ../device.h:
 
@@ -48,3 +48,7 @@ D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Sour
 ../DIO_config.h:
 
 ../Timer1_PWM.h:
+
+../pwm_timer0.h:
+
+../pwm_timer2.h:

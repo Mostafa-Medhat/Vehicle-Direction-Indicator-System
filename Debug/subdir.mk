@@ -7,31 +7,31 @@ C_SRCS += \
 ../DIO_config.c \
 ../PollingDataClient.c \
 ../Timer1_PWM.c \
-../TimerCompareMode.c \
 ../device.c \
 ../gpio.c \
 ../main.c \
-../pwm.c 
+../pwm_timer0.c \
+../pwm_timer2.c 
 
 OBJS += \
 ./DIO_config.o \
 ./PollingDataClient.o \
 ./Timer1_PWM.o \
-./TimerCompareMode.o \
 ./device.o \
 ./gpio.o \
 ./main.o \
-./pwm.o 
+./pwm_timer0.o \
+./pwm_timer2.o 
 
 C_DEPS += \
 ./DIO_config.d \
 ./PollingDataClient.d \
 ./Timer1_PWM.d \
-./TimerCompareMode.d \
 ./device.d \
 ./gpio.d \
 ./main.d \
-./pwm.d 
+./pwm_timer0.d \
+./pwm_timer2.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
