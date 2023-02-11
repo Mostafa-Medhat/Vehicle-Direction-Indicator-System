@@ -10,9 +10,7 @@ C_SRCS += \
 ../TimerCompareMode.c \
 ../device.c \
 ../gpio.c \
-../lcd.c \
-../main.c \
-../poller.c 
+../main.c 
 
 OBJS += \
 ./DIO_config.o \
@@ -21,9 +19,7 @@ OBJS += \
 ./TimerCompareMode.o \
 ./device.o \
 ./gpio.o \
-./lcd.o \
-./main.o \
-./poller.o 
+./main.o 
 
 C_DEPS += \
 ./DIO_config.d \
@@ -32,9 +28,7 @@ C_DEPS += \
 ./TimerCompareMode.d \
 ./device.d \
 ./gpio.d \
-./lcd.d \
-./main.d \
-./poller.d 
+./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

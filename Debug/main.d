@@ -1,6 +1,4 @@
-main.o main.o: ../main.c ../poller.h ../gpio.h ../std_types.h \
-  ../DIO_config.h ../TimerCompareMode.h ../lcd.h ../Timer1_PWM.h \
-  ../device.h \
+main.o main.o: ../main.c ../device.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/FreeRTOS.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/FreeRTOSConfig.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/projdefs.h \
@@ -12,21 +10,8 @@ main.o main.o: ../main.c ../poller.h ../gpio.h ../std_types.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/list.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/timers.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h \
-  ../common_macros.h ../PollingDataClient.h
-
-../poller.h:
-
-../gpio.h:
-
-../std_types.h:
-
-../DIO_config.h:
-
-../TimerCompareMode.h:
-
-../lcd.h:
-
-../Timer1_PWM.h:
+  ../common_macros.h ../PollingDataClient.h ../std_types.h ../gpio.h \
+  ../DIO_config.h ../Timer1_PWM.h
 
 ../device.h:
 
@@ -55,3 +40,11 @@ D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Sour
 ../common_macros.h:
 
 ../PollingDataClient.h:
+
+../std_types.h:
+
+../gpio.h:
+
+../DIO_config.h:
+
+../Timer1_PWM.h:
