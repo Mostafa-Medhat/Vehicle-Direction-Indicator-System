@@ -120,19 +120,6 @@ void BothLEDS_Blink()
 //{
 //	unsigned char duty_cycle= (uint8)((rightIntnesity/100.0)*255);
 //	PWM_Timer0_Start(128);
-
-//	int i = 0;
-//	timer1_SetPWM_B(50);
-//	for(i = 2 ; i < 17 ; i++){
-//		timer1_SetPWM_A((i*5));
-//
-//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
-//	}
-//	for(i = 16 ; i > 1 ; i--){
-//		timer1_SetPWM_A((i*5));
-//
-//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
-//	}
 //}
 //
 //void BothLEDS_Blink(void)
