@@ -30,6 +30,8 @@ void Task3_ToggleLED(void);
 void Task4_PWM(void);
 
 
+TimerHandle_t xTimer2;
+
 int main(void)
 {
 	DIO_init();
@@ -42,7 +44,7 @@ int main(void)
 	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);
 
 	TimerHandle_t xTimer1 = xTimerCreate("timer1",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData);
-	TimerHandle_t xTimer2 = xTimerCreate("timer2",500/portTICK_PERIOD_MS,pdTRUE,0,Task3_ToggleLED);
+	xTimer2 = xTimerCreate("timer2",500/portTICK_PERIOD_MS,pdTRUE,0,Task3_ToggleLED);
 //	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM);
 
 
