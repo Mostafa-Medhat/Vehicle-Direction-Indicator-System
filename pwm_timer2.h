@@ -18,7 +18,6 @@
 
 
 
-void PWM_Timer2_Init(void);
 void PWM_Timer2_Start(uint8 duty_cycle);
 
 #endif /* PWM_TIMER2_H_ */
