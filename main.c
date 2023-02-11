@@ -18,36 +18,38 @@
 #include "common_macros.h"
 #include "PollingDataClient.h"
 
-long timeCounter = 0;
-unsigned char DeviceFlag = 0;
+
+unsigned char timerCounter = 0;
+unsigned char DeviceFlag = 1;
 unsigned char HandlerFlag = 0;
+unsigned char state = 0;
 States_GroupType ButtonStateTest = {0,0,0,0};
 
-void Task1_Func(void);
-TaskHandle_t task1ptr;
+void Task1_GetData(void);
 
-void Task2_Func(void);
+void Task2_HandleData(void);
 TaskHandle_t task2ptr;
 
-void Task3_Func(void);
-TaskHandle_t task3ptr;
+void Task3_ToggleLED(void);
+//TaskHandle_t task3ptr;
+
 
 int main(void)
 {
 	DIO_init();
-	LCD_init();
-//	timer1_PWM_Init();
+	timer1_PWM_Init();
 
 	SREG |=(1<<7);			// I bit Enabled
 
-	xTaskCreate(Task1_Func,"first",configMINIMAL_STACK_SIZE,NULL,1,&task1ptr);
-	xTaskCreate(Task2_Func,"second",configMINIMAL_STACK_SIZE,NULL,1,&task2ptr);
-	xTaskCreate(Task3_Func,"third",configMINIMAL_STACK_SIZE,NULL,0,&task3ptr);
 
-//	TimerHandle_t xTimer1 = xTimerCreate("timer1",100/portTICK_PERIOD_MS,pdTRUE,0,Task1_Func);
-//	TimerHandle_t xTimer2 = xTimerCreate("timer2",10/portTICK_PERIOD_MS,pdTRUE,0,Task2_Func);
-//	xTimerStart(xTimer1, 1);
-//	xTimerStart(xTimer2, 10);
+
+	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);
+
+	TimerHandle_t xTimer1 = xTimerCreate("timer2",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData);
+	TimerHandle_t xTimer2 = xTimerCreate("timer1",500/portTICK_PERIOD_MS,pdTRUE,0,Task3_Func);
+
+	xTimerStart(xTimer2, 1);
+	xTimerStart(xTimer1, 10);
 
 
 
@@ -65,28 +67,60 @@ int main(void)
 //}
 
 
-void Task1_Func(void)
+void Task1_GetData(void)
 {
-	while(1)
-	{
+		ButtonStateTest = Get_Data();
+}
+
+void Task3_Func(void)
+{
+//	while(1)
+//	{
 //		SET_BIT(PORTB,5);
-		DeviceFlag = 1;
-		vTaskDelay(100/portTICK_PERIOD_MS);
-	}
+		ToggleLED = !ToggleLED;
+//		vTaskDelay(100/portTICK_PERIOD_MS);
+//	}
 
 }
 
-void Task2_Func(void)
-{
+
+
+
+/*******************************Some unworking tests**************************************************************/
+void Task2_HandleData(void){
 	while(1)
 	{
-//		CLEAR_BIT(PORTB,5);
-		if(DeviceFlag == 1)
-		{
-		DeviceFlag = 0;
-		ButtonStateTest = Get_Data();
-		HandlerFlag = 1;
-		TOGGLE_BIT(PORTB,5);
+
+		if(ButtonStateTest.ignition_key==TRUE)
+			{
+				if(ButtonStateTest.rightIndicator==TRUE)
+				{
+					state = RIGHT_INDICATOR;
+				}
+				else if(ButtonStateTest.leftIndicator==TRUE)
+				{
+					state = LEFT_INDICATOR;
+				}
+				else
+				{
+					state = NO_INDICATOR;
+				}
+			}
+			else{
+				state = NO_INDICATOR;
+			}
+
+			if(ButtonStateTest.hazard_Btn==TRUE)
+			{
+				state = HAZARD_BUTTON;
+			}
+
+		State_Handler();
+
+
+
+//		Handle_data(&ButtonStateTest);
+
 //		if(ButtonStateTest.rightIndicator == LOGIC_HIGH)
 //		{
 //			SET_BIT(PORTB,6);
@@ -95,27 +129,26 @@ void Task2_Func(void)
 //		{
 //			CLEAR_BIT(PORTB,6);
 //		}
-		//				CLEAR_BIT(PORTB,6);
-
-		//		CLEAR_BIT(PORTB,6);
-		//		vTaskDelay(pdMS_TO_TICKS( 25 ));
-
-		}
+//
+//		if(ButtonStateTest.hazard_Btn == LOGIC_HIGH)
+//		{
+//			SET_BIT(PORTB,5);
+//			SET_BIT(PORTB,6);
+//		}
+//		else
+//		{
+//			CLEAR_BIT(PORTB,5);
+//			CLEAR_BIT(PORTB,6);
+//
+//		}
 	}
 }
-/*******************************Some unworking tests**************************************************************************/
-void Task3_Func(void){
-	//	TickType_t xLastWakeTime2;
-	//	const TickType_t xPeriod2 = pdMS_TO_TICKS( 2000 );
-	//	xLastWakeTime2 = xTaskGetTickCount();
-	while(1)
-	{
-		if(HandlerFlag == 1)
-		{
-			HandlerFlag = 0;
-			TOGGLE_BIT(PORTB,6);
 
-//			Handle_data(&ButtonStateTest);
+
+//			TOGGLE_BIT(PORTB,5);
+
+
+
 //			timer1_SetPWM_A(0);
 //			if(ButtonStateTest.rightIndicator){
 //				//				SET_BIT(PORTB,5);
@@ -126,10 +159,8 @@ void Task3_Func(void){
 //			else{
 //				timer1_SetPWM_B((0));
 				//				CLEAR_BIT(PORTB,5);
-		}
+
 			//			Handle_data(&ButtonStateTest);
-	}
-}
 //
 //
 //void Task3_Func(void){
