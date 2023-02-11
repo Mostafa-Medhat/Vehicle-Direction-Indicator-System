@@ -13,6 +13,9 @@
 #include "std_types.h"
 #include "gpio.h"
 #include "Timer1_PWM.h"
+#include "pwm_timer0.h"
+#include "pwm_timer2.h"
+
 
 unsigned char timerCounter = 0;
 unsigned char DeviceFlag = 1;
@@ -35,7 +38,7 @@ TimerHandle_t xTimer2;
 int main(void)
 {
 	DIO_init();
-//	timer1_PWM_Init();
+	//	timer1_PWM_Init();
 
 	SREG |=(1<<7);			// I bit Enabled
 
@@ -45,12 +48,12 @@ int main(void)
 
 	TimerHandle_t xTimer1 = xTimerCreate("timer1",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData);
 	xTimer2 = xTimerCreate("timer2",500/portTICK_PERIOD_MS,pdTRUE,0,Task3_ToggleLED);
-//	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM);
+	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM);
 
 
 	xTimerStart(xTimer1, 1);
 	xTimerStart(xTimer2, 1);
-//	xTimerStart(xTimer3, 1);
+	xTimerStart(xTimer3, 1);
 
 	vTaskStartScheduler();
 	while(1)
@@ -81,16 +84,23 @@ void Task3_ToggleLED(void)
 }
 
 
+/*
+ * Increment or Decrement by 13 digital value ~= 5%
+ */
 void Task4_PWM(void)
 {
-	if(ToggleLED == TRUE && rightIntnesity < 80)
+	if(ToggleLED == TRUE && leftIntensity < 204)
 	{
-		 rightIntnesity+=5;
+		leftIntensity+=13;
+		rightIntensity+=13;
 	}
-	else if (ToggleLED == FALSE && rightIntnesity > 10)
+	else if (ToggleLED == FALSE && leftIntensity > 25)
 	{
-		 rightIntnesity-=5;
+		leftIntensity-=13;
+		rightIntensity-=13;
 	}
 }
+
+
 
 /***********************************************************************************************************************************/
