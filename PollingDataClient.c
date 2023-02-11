@@ -9,6 +9,7 @@
 #include "Timer1_PWM.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "timers.h"
 
 #define WAIT_TIME_PER_DUTY_CHANGE	30
 //uint8_t ignitionState = LOGIC_LOW;
@@ -75,14 +76,14 @@ void State_Handler()
 
 void RightLED_Blink()
 {
-//	xTimerReset(xTimer1);
+//	xTimerReset(xTimer2,1);
 	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, ToggleLED);
 	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
 }
 
 void LeftLED_Blink()
 {
-//	xTimerReset(xTimer1);
+//	xTimerReset(xTimer2,1);
 	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, ToggleLED);
 	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_LOW);
 
@@ -97,7 +98,7 @@ void NoLED_Blink(void)
 
 void BothLEDS_Blink()
 {
-//	xTimerReset(xTimer1);
+//	xTimerReset(xTimer2,1);
 	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, ToggleLED);
 	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, ToggleLED);
 }
