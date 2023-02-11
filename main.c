@@ -50,7 +50,7 @@ int main(void)
 
 	xTimerStart(xTimer1, 1);
 	xTimerStart(xTimer2, 1);
-//	xTimerStart(xTimer3, 10);
+//	xTimerStart(xTimer3, 1);
 
 	vTaskStartScheduler();
 	while(1)
@@ -83,13 +83,13 @@ void Task3_ToggleLED(void)
 
 void Task4_PWM(void)
 {
-	if(ToggleLED == TRUE)
+	if(ToggleLED == TRUE && rightIntnesity < 80)
 	{
-		 rightIntnesity++;
+		 rightIntnesity+=5;
 	}
-	else if (ToggleLED == FALSE)
+	else if (ToggleLED == FALSE && rightIntnesity > 10)
 	{
-		 rightIntnesity--;
+		 rightIntnesity-=5;
 	}
 }
 
