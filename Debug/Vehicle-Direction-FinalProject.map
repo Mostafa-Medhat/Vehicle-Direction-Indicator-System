@@ -49,6 +49,7 @@ Allocating common symbols
 Common symbol       size              file
 
 task2ptr            0x2               ./main.o
+xTimer2             0x2               ./main.o
 data                0x1               ./device.o
 
 Memory Configuration
@@ -175,7 +176,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x7c20
+.text           0x00000000     0x7c28
  *(.vectors)
  .vectors       0x00000000       0x8c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm64.o
                 0x00000000                __vectors
@@ -721,42 +722,42 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .text.DIO_ChannelGroupRead
                 0x000078d2      0x134 ./gpio.o
                 0x000078d2                DIO_ChannelGroupRead
- .text.main     0x00007a06       0xb6 ./main.o
+ .text.main     0x00007a06       0xbe ./main.o
                 0x00007a06                main
  .text.Task1_GetData
-                0x00007abc       0x26 ./main.o
-                0x00007abc                Task1_GetData
+                0x00007ac4       0x26 ./main.o
+                0x00007ac4                Task1_GetData
  .text.Task2_HandleData
-                0x00007ae2       0x12 ./main.o
-                0x00007ae2                Task2_HandleData
+                0x00007aea       0x12 ./main.o
+                0x00007aea                Task2_HandleData
  .text.Task3_ToggleLED
-                0x00007af4       0x26 ./main.o
-                0x00007af4                Task3_ToggleLED
+                0x00007afc       0x26 ./main.o
+                0x00007afc                Task3_ToggleLED
  .text.Task4_PWM
-                0x00007b1a       0x34 ./main.o
-                0x00007b1a                Task4_PWM
- .text.libgcc   0x00007b4e       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
-                0x00007b4e                __udivmodqi4
- .text.libgcc   0x00007b66       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x00007b66                __udivmodhi4
- .text.libgcc   0x00007b8e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00007b8e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00007b8e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00007b8e       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00007b8e                __prologue_saves__
- .text.libgcc   0x00007bc6       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00007bc6                __epilogue_restores__
+                0x00007b22       0x34 ./main.o
+                0x00007b22                Task4_PWM
+ .text.libgcc   0x00007b56       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                0x00007b56                __udivmodqi4
+ .text.libgcc   0x00007b6e       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x00007b6e                __udivmodhi4
+ .text.libgcc   0x00007b96        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00007b96        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00007b96        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00007b96       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00007b96                __prologue_saves__
+ .text.libgcc   0x00007bce       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00007bce                __epilogue_restores__
  .text.avr-libc
-                0x00007bfc       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
-                0x00007bfc                memcpy
+                0x00007c04       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                0x00007c04                memcpy
  .text.avr-libc
-                0x00007c0e        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
-                0x00007c0e                memset
-                0x00007c1c                . = ALIGN (0x2)
+                0x00007c16        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+                0x00007c16                memset
+                0x00007c24                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00007c1c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00007c1c                exit
-                0x00007c1c                _exit
+ .fini9         0x00007c24        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00007c24                exit
+                0x00007c24                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -775,11 +776,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00007c1c        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00007c24        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00007c20                _etext = .
+                0x00007c28                _etext = .
 
-.data           0x00800100      0x13e load address 0x00007c20
+.data           0x00800100      0x13e load address 0x00007c28
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm64.o
@@ -841,7 +842,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x0080023e                _edata = .
                 0x0080023e                PROVIDE (__data_end, .)
 
-.bss            0x0080023e      0x6ac
+.bss            0x0080023e      0x6ae
                 0x0080023e                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x0080023e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm64.o
@@ -1003,18 +1004,19 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  COMMON         0x008008e7        0x0 ./PollingDataClient.o
  COMMON         0x008008e7        0x1 ./device.o
                 0x008008e7                data
- COMMON         0x008008e8        0x2 ./main.o
+ COMMON         0x008008e8        0x4 ./main.o
                 0x008008e8                task2ptr
-                0x008008ea                PROVIDE (__bss_end, .)
-                0x00007c20                __data_load_start = LOADADDR (.data)
-                0x00007d5e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008008ea                xTimer2
+                0x008008ec                PROVIDE (__bss_end, .)
+                0x00007c28                __data_load_start = LOADADDR (.data)
+                0x00007d66                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008008ea        0x0
-                0x008008ea                PROVIDE (__noinit_start, .)
+.noinit         0x008008ec        0x0
+                0x008008ec                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008008ea                PROVIDE (__noinit_end, .)
-                0x008008ea                _end = .
-                0x008008ea                PROVIDE (__heap_start, .)
+                0x008008ec                PROVIDE (__noinit_end, .)
+                0x008008ec                _end = .
+                0x008008ec                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -1032,7 +1034,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0xa0f8
+.stab           0x00000000     0xa104
  *(.stab)
  .stab          0x00000000      0x7d4 ./Source/portable/MemMang/heap_1.o
  .stab          0x000007d4      0x840 ./Source/portable/GCC/ATMega323/port.o
@@ -1051,22 +1053,22 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                                0x16bc (size before relaxing)
  .stab          0x000082c8      0x1e0 ./DIO_config.o
                                 0x1ec (size before relaxing)
- .stab          0x000084a8      0x5f4 ./PollingDataClient.o
-                                0x960 (size before relaxing)
- .stab          0x00008a9c      0x2d0 ./Timer1_PWM.o
+ .stab          0x000084a8      0x600 ./PollingDataClient.o
+                                0x99c (size before relaxing)
+ .stab          0x00008aa8      0x2d0 ./Timer1_PWM.o
                                 0x48c (size before relaxing)
- .stab          0x00008d6c      0x174 ./TimerCompareMode.o
+ .stab          0x00008d78      0x174 ./TimerCompareMode.o
                                 0x330 (size before relaxing)
- .stab          0x00008ee0      0x438 ./device.o
+ .stab          0x00008eec      0x438 ./device.o
                                 0x9f0 (size before relaxing)
- .stab          0x00009318      0xa14 ./gpio.o
+ .stab          0x00009324      0xa14 ./gpio.o
                                 0xcb4 (size before relaxing)
- .stab          0x00009d2c      0x3cc ./main.o
+ .stab          0x00009d38      0x3cc ./main.o
                                 0x930 (size before relaxing)
 
-.stabstr        0x00000000     0x658d
+.stabstr        0x00000000     0x658e
  *(.stabstr)
- .stabstr       0x00000000     0x658d ./Source/portable/MemMang/heap_1.o
+ .stabstr       0x00000000     0x658e ./Source/portable/MemMang/heap_1.o
 
 .stab.excl
  *(.stab.excl)

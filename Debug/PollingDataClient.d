@@ -9,7 +9,9 @@ PollingDataClient.o PollingDataClient.o: ../PollingDataClient.c \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\portable\GCC\ATMega323/portmacro.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/mpu_wrappers.h \
   D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h \
-  D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/list.h
+  D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/list.h \
+  D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/timers.h \
+  D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h
 
 ../PollingDataClient.h:
 
@@ -40,3 +42,7 @@ D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Sour
 D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h:
 
 D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/list.h:
+
+D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/timers.h:
+
+D:\Eclipse_V2\workspaces\AdvEmbedded_Project\Vehicle-Direction-FinalProject\Source\include/task.h:
