@@ -10,13 +10,16 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "timers.h"
-#include "pwm.h"
+
+#include "pwm_timer2.h"
+#include "pwm_timer0.h"
 
 #define WAIT_TIME_PER_DUTY_CHANGE	30
 //uint8_t ignitionState = LOGIC_LOW;
 unsigned char state;
 unsigned char ToggleLED = 0;
-unsigned char rightIntnesity =  10;
+unsigned char leftIntensity =  26;
+unsigned char rightIntensity = 26;
 
 
 
@@ -74,70 +77,69 @@ void State_Handler()
 
 }
 
-void RightLED_Blink()
+
+
+
+void RightLED_Blink(void)
 {
-//	xTimerReset(xTimer2,1);
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, ToggleLED);
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
+	PWM_Timer0_Start(0);
+	PWM_Timer2_Start(rightIntensity);
 }
+
+
+void LeftLED_Blink(void)
+{
+	PWM_Timer2_Start(0);
+	PWM_Timer0_Start(leftIntensity);
+}
+void BothLEDS_Blink(void)
+{
+	PWM_Timer0_Start(leftIntensity);
+	PWM_Timer2_Start(rightIntensity);
+}
+
+void NoLED_Blink(void){
+	PWM_Timer0_Start(0);
+	PWM_Timer2_Start(0);
+}
+
+
+
+
+/******************************************************************************************************************************
+ *
+ * 											NON PWM BLINKING
+ *
+ ******************************************************************************************************************************/
+
+//void RightLED_Blink()
+//{
+////	xTimerReset(xTimer2,1);
+//	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, ToggleLED);
+//	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
+//}
 //
-void LeftLED_Blink()
-{
-//	xTimerReset(xTimer2,1);
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, ToggleLED);
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_LOW);
-
-}
-
-void NoLED_Blink(void)
-{
-
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_LOW);
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
-}
-
-void BothLEDS_Blink()
-{
-//	xTimerReset(xTimer2,1);
-	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, ToggleLED);
-	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, ToggleLED);
-}
-
-
-
-
+//void LeftLED_Blink()
+//{
+////	xTimerReset(xTimer2,1);
+//	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, ToggleLED);
+//	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_LOW);
 //
-//void RightLED_Blink(void)
+//}
+
+//void NoLED_Blink(void)
 //{
 //
-////	timer1_SetPWM_A(0);
-////	timer1_SetPWM_B((rightIntnesity*5));
-//
+//	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, LOGIC_LOW);
+//	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
 //}
-//
-//
-//void LeftLED_Blink(void)
+
+//void BothLEDS_Blink()
 //{
-//	unsigned char duty_cycle= (uint8)((rightIntnesity/100.0)*255);
-//	PWM_Timer0_Start(128);
+////	xTimerReset(xTimer2,1);
+//	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, ToggleLED);
+//	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, ToggleLED);
 //}
-//
-//void BothLEDS_Blink(void)
-//{
-//	int i = 0;
-//	for(i = 2 ; i < 17 ; i++){
-//		timer1_SetPWM_A_B(i*5);
-//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
-//	}
-//	for(i = 16 ; i > 1 ; i--){
-//		timer1_SetPWM_A_B(i*5);
-//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
-//	}
-//
-//}
-//
-//
-//void NoLED_Blink(void){
-//	timer1_SetPWM_A_B(0);
-//}
-////
+
+
+
