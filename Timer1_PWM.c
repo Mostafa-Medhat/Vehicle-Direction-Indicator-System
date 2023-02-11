@@ -18,6 +18,7 @@ void timer1_PWM_Init(void){
 //	OCR1A = 20000;
 //	OCR1B = 45500;
 	DDRB |= (1<<PB5) | (1<<PB6);
+	PORTB = 0x00;
 
 }
 
