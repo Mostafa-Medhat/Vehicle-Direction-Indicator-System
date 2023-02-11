@@ -10,14 +10,14 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "timers.h"
+#include "pwm.h"
 
 #define WAIT_TIME_PER_DUTY_CHANGE	30
 //uint8_t ignitionState = LOGIC_LOW;
 unsigned char state;
 unsigned char ToggleLED = 0;
-unsigned char rightIntnesity =  0;
+unsigned char rightIntnesity =  10;
 
-unsigned char RightLED_counter = 0;
 
 
 
@@ -80,7 +80,7 @@ void RightLED_Blink()
 	GPIO_writePin(dio_config_array[RIGHT_LED_ID].port_id, dio_config_array[RIGHT_LED_ID].pin_num, ToggleLED);
 	GPIO_writePin(dio_config_array[LEFT_LED_ID].port_id, dio_config_array[LEFT_LED_ID].pin_num, LOGIC_LOW);
 }
-
+//
 void LeftLED_Blink()
 {
 //	xTimerReset(xTimer2,1);
@@ -118,19 +118,21 @@ void BothLEDS_Blink()
 //
 //void LeftLED_Blink(void)
 //{
+//	unsigned char duty_cycle= (uint8)((rightIntnesity/100.0)*255);
+//	PWM_Timer0_Start(128);
+
+//	int i = 0;
+//	timer1_SetPWM_B(50);
+//	for(i = 2 ; i < 17 ; i++){
+//		timer1_SetPWM_A((i*5));
 //
-////	int i = 0;
-////	timer1_SetPWM_B(50);
-////	for(i = 2 ; i < 17 ; i++){
-////		timer1_SetPWM_A((i*5));
-////
-////		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
-////	}
-////	for(i = 16 ; i > 1 ; i--){
-////		timer1_SetPWM_A((i*5));
-////
-////		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
-////	}
+//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
+//	}
+//	for(i = 16 ; i > 1 ; i--){
+//		timer1_SetPWM_A((i*5));
+//
+//		vTaskDelay(WAIT_TIME_PER_DUTY_CHANGE/portTICK_PERIOD_MS);
+//	}
 //}
 //
 //void BothLEDS_Blink(void)
