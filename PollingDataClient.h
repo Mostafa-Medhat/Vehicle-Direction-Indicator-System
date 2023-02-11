@@ -15,12 +15,13 @@
 #define HAZARD_BUTTON	4
 
 extern unsigned char ToggleLED;
+unsigned char rightIntnesity;
 
 //void Handle_data(States_GroupType *Sates_Ptr);
-void State_Handler();
-void RightLED_Blink();
-void LeftLED_Blink();
-void BothLEDS_Blink();
+void State_Handler(void);
+void RightLED_Blink(void);
+void LeftLED_Blink(void);
+void BothLEDS_Blink(void);
 void NoLED_Blink(void);
 
 
