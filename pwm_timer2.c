@@ -28,6 +28,12 @@ void PWM_Timer2_Start(uint8 duty_cycle)
 	SET_BIT(TCCR2,WGM00);
 	SET_BIT(TCCR2,WGM01);
 	SET_BIT(TCCR2,COM01);
-	SET_BIT(TCCR2,CS00);
+
+	TCCR2 |= (FREQUENCY<<CS00);
+	/*
+	 * SET_BIT(TCCR0,CS00);
+	 * SET_BIT(TCCR0,CS01);
+	 *
+	 */
 }
 
