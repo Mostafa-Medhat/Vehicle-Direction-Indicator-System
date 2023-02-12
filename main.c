@@ -12,10 +12,11 @@
 #include "PollingDataClient.h"
 #include "std_types.h"
 #include "gpio.h"
-#include "Timer1_PWM.h"
+
 #include "pwm_timer0.h"
 #include "pwm_timer2.h"
-//#include "avr/iom64.h"
+#include "avr/iom64.h"
+
 
 
 unsigned char timerCounter = 0;
@@ -34,11 +35,11 @@ void Task3_ToggleLED(void);
 void Task4_PWM(void);
 
 
-//TimerHandle_t xTimer2;
+/*TimerHandle_t xTimer2;*/
 
 int main(void)
 {
-	DIO_init();  //proxy pattern
+	DIO_init();  /*proxy pattern*/
 
 
 	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);/* polling Handle data function*/
@@ -86,14 +87,14 @@ void Task3_ToggleLED(void)
  */
 void Task4_PWM(void)
 {
-	if(ToggleLED == TRUE && LEDIntensity < 204) /*204 = 80%*/
+	if(ToggleLED == TRUE && LEDIntensity < (unsigned char)204) /*204 = 80%*/
 	{
-		LEDIntensity+=13;
+		LEDIntensity+= (unsigned char)13;
 
 	}
-	else if (ToggleLED == FALSE && LEDIntensity > 25)/*25 = 10%*/
+	else if (ToggleLED == FALSE && LEDIntensity > (unsigned char)25)/*25 = 10%*/
 	{
-		LEDIntensity-=13;
+		LEDIntensity-= (unsigned char)13;
 
 	}
 }
