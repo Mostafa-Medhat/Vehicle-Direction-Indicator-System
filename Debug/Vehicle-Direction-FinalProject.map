@@ -176,7 +176,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x7c92
+.text           0x00000000     0x7c98
  *(.vectors)
  .vectors       0x00000000       0x8c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm64.o
                 0x00000000                __vectors
@@ -664,104 +664,104 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00006846       0x68 ./PollingDataClient.o
                 0x00006846                Handle_data
  .text.State_Handler
-                0x000068ae       0x6c ./PollingDataClient.o
+                0x000068ae       0x72 ./PollingDataClient.o
                 0x000068ae                State_Handler
  .text.RightLED_Blink
-                0x0000691a       0x1c ./PollingDataClient.o
-                0x0000691a                RightLED_Blink
+                0x00006920       0x1c ./PollingDataClient.o
+                0x00006920                RightLED_Blink
  .text.LeftLED_Blink
-                0x00006936       0x1c ./PollingDataClient.o
-                0x00006936                LeftLED_Blink
+                0x0000693c       0x1c ./PollingDataClient.o
+                0x0000693c                LeftLED_Blink
  .text.BothLEDS_Blink
-                0x00006952       0x1e ./PollingDataClient.o
-                0x00006952                BothLEDS_Blink
+                0x00006958       0x1e ./PollingDataClient.o
+                0x00006958                BothLEDS_Blink
  .text.NoLED_Blink
-                0x00006970       0x1a ./PollingDataClient.o
-                0x00006970                NoLED_Blink
+                0x00006976       0x1a ./PollingDataClient.o
+                0x00006976                NoLED_Blink
  .text.timer1_PWM_Init
-                0x0000698a       0x5c ./Timer1_PWM.o
-                0x0000698a                timer1_PWM_Init
+                0x00006990       0x5c ./Timer1_PWM.o
+                0x00006990                timer1_PWM_Init
  .text.timer1_SetPWM_B
-                0x000069e6       0xa6 ./Timer1_PWM.o
-                0x000069e6                timer1_SetPWM_B
+                0x000069ec       0xa6 ./Timer1_PWM.o
+                0x000069ec                timer1_SetPWM_B
  .text.timer1_SetPWM_A
-                0x00006a8c       0xa6 ./Timer1_PWM.o
-                0x00006a8c                timer1_SetPWM_A
+                0x00006a92       0xa6 ./Timer1_PWM.o
+                0x00006a92                timer1_SetPWM_A
  .text.timer1_SetPWM_A_B
-                0x00006b32       0xb2 ./Timer1_PWM.o
-                0x00006b32                timer1_SetPWM_A_B
+                0x00006b38       0xb2 ./Timer1_PWM.o
+                0x00006b38                timer1_SetPWM_A_B
  .text.Get_Data
-                0x00006be4      0x1cc ./device.o
-                0x00006be4                Get_Data
+                0x00006bea      0x1cc ./device.o
+                0x00006bea                Get_Data
  .text.GPIO_setupPinDirection
-                0x00006db0      0x29e ./gpio.o
-                0x00006db0                GPIO_setupPinDirection
+                0x00006db6      0x29e ./gpio.o
+                0x00006db6                GPIO_setupPinDirection
  .text.GPIO_writePin
-                0x0000704e      0x29e ./gpio.o
-                0x0000704e                GPIO_writePin
+                0x00007054      0x29e ./gpio.o
+                0x00007054                GPIO_writePin
  .text.GPIO_readPin
-                0x000072ec      0x1b0 ./gpio.o
-                0x000072ec                GPIO_readPin
+                0x000072f2      0x1b0 ./gpio.o
+                0x000072f2                GPIO_readPin
  .text.GPIO_setupPortDirection
-                0x0000749c       0xb2 ./gpio.o
-                0x0000749c                GPIO_setupPortDirection
+                0x000074a2       0xb2 ./gpio.o
+                0x000074a2                GPIO_setupPortDirection
  .text.GPIO_writePort
-                0x0000754e       0xb2 ./gpio.o
-                0x0000754e                GPIO_writePort
+                0x00007554       0xb2 ./gpio.o
+                0x00007554                GPIO_writePort
  .text.GPIO_readPort
-                0x00007600       0xb4 ./gpio.o
-                0x00007600                GPIO_readPort
+                0x00007606       0xb4 ./gpio.o
+                0x00007606                GPIO_readPort
  .text.DIO_init
-                0x000076b4       0x82 ./gpio.o
-                0x000076b4                DIO_init
+                0x000076ba       0x82 ./gpio.o
+                0x000076ba                DIO_init
  .text.DIO_ChannelGroupWrite
-                0x00007736      0x10c ./gpio.o
-                0x00007736                DIO_ChannelGroupWrite
+                0x0000773c      0x10c ./gpio.o
+                0x0000773c                DIO_ChannelGroupWrite
  .text.DIO_ChannelGroupRead
-                0x00007842      0x134 ./gpio.o
-                0x00007842                DIO_ChannelGroupRead
- .text.main     0x00007976       0xe0 ./main.o
-                0x00007976                main
+                0x00007848      0x134 ./gpio.o
+                0x00007848                DIO_ChannelGroupRead
+ .text.main     0x0000797c       0xe0 ./main.o
+                0x0000797c                main
  .text.Task1_GetData
-                0x00007a56       0x26 ./main.o
-                0x00007a56                Task1_GetData
+                0x00007a5c       0x26 ./main.o
+                0x00007a5c                Task1_GetData
  .text.Task2_HandleData
-                0x00007a7c       0x12 ./main.o
-                0x00007a7c                Task2_HandleData
+                0x00007a82       0x12 ./main.o
+                0x00007a82                Task2_HandleData
  .text.Task3_ToggleLED
-                0x00007a8e       0x26 ./main.o
-                0x00007a8e                Task3_ToggleLED
+                0x00007a94       0x26 ./main.o
+                0x00007a94                Task3_ToggleLED
  .text.Task4_PWM
-                0x00007ab4       0x44 ./main.o
-                0x00007ab4                Task4_PWM
+                0x00007aba       0x44 ./main.o
+                0x00007aba                Task4_PWM
  .text.PWM_Timer0_Start
-                0x00007af8       0x64 ./pwm_timer0.o
-                0x00007af8                PWM_Timer0_Start
+                0x00007afe       0x64 ./pwm_timer0.o
+                0x00007afe                PWM_Timer0_Start
  .text.PWM_Timer2_Start
-                0x00007b5c       0x64 ./pwm_timer2.o
-                0x00007b5c                PWM_Timer2_Start
- .text.libgcc   0x00007bc0       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
-                0x00007bc0                __udivmodqi4
- .text.libgcc   0x00007bd8       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x00007bd8                __udivmodhi4
- .text.libgcc   0x00007c00        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00007c00        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00007c00        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00007c00       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00007c00                __prologue_saves__
- .text.libgcc   0x00007c38       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00007c38                __epilogue_restores__
+                0x00007b62       0x64 ./pwm_timer2.o
+                0x00007b62                PWM_Timer2_Start
+ .text.libgcc   0x00007bc6       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                0x00007bc6                __udivmodqi4
+ .text.libgcc   0x00007bde       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x00007bde                __udivmodhi4
+ .text.libgcc   0x00007c06        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00007c06        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00007c06        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00007c06       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00007c06                __prologue_saves__
+ .text.libgcc   0x00007c3e       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00007c3e                __epilogue_restores__
  .text.avr-libc
-                0x00007c6e       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
-                0x00007c6e                memcpy
+                0x00007c74       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                0x00007c74                memcpy
  .text.avr-libc
-                0x00007c80        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
-                0x00007c80                memset
-                0x00007c8e                . = ALIGN (0x2)
+                0x00007c86        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+                0x00007c86                memset
+                0x00007c94                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00007c8e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00007c8e                exit
-                0x00007c8e                _exit
+ .fini9         0x00007c94        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00007c94                exit
+                0x00007c94                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -780,11 +780,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00007c8e        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00007c94        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00007c92                _etext = .
+                0x00007c98                _etext = .
 
-.data           0x00800100      0x146 load address 0x00007c92
+.data           0x00800100      0x146 load address 0x00007c98
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm64.o
@@ -1010,8 +1010,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  COMMON         0x008008ee        0x2 ./main.o
                 0x008008ee                task2ptr
                 0x008008f0                PROVIDE (__bss_end, .)
-                0x00007c92                __data_load_start = LOADADDR (.data)
-                0x00007dd8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00007c98                __data_load_start = LOADADDR (.data)
+                0x00007dde                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008008f0        0x0
                 0x008008f0                PROVIDE (__noinit_start, .)
@@ -1036,7 +1036,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0xa308
+.stab           0x00000000     0xa314
  *(.stab)
  .stab          0x00000000      0x7d4 ./Source/portable/MemMang/heap_1.o
  .stab          0x000007d4      0x840 ./Source/portable/GCC/ATMega323/port.o
@@ -1055,19 +1055,19 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                                0x16bc (size before relaxing)
  .stab          0x000082c8      0x1e0 ./DIO_config.o
                                 0x1ec (size before relaxing)
- .stab          0x000084a8      0x5f4 ./PollingDataClient.o
-                                0x990 (size before relaxing)
- .stab          0x00008a9c      0x2d0 ./Timer1_PWM.o
+ .stab          0x000084a8      0x600 ./PollingDataClient.o
+                                0x99c (size before relaxing)
+ .stab          0x00008aa8      0x2d0 ./Timer1_PWM.o
                                 0x48c (size before relaxing)
- .stab          0x00008d6c      0x438 ./device.o
+ .stab          0x00008d78      0x438 ./device.o
                                 0x9f0 (size before relaxing)
- .stab          0x000091a4      0xa14 ./gpio.o
+ .stab          0x000091b0      0xa14 ./gpio.o
                                 0xcb4 (size before relaxing)
- .stab          0x00009bb8      0x3d8 ./main.o
+ .stab          0x00009bc4      0x3d8 ./main.o
                                 0x93c (size before relaxing)
- .stab          0x00009f90      0x1b0 ./pwm_timer0.o
+ .stab          0x00009f9c      0x1b0 ./pwm_timer0.o
                                 0x450 (size before relaxing)
- .stab          0x0000a140      0x1c8 ./pwm_timer2.o
+ .stab          0x0000a14c      0x1c8 ./pwm_timer2.o
                                 0x468 (size before relaxing)
 
 .stabstr        0x00000000     0x65c7
