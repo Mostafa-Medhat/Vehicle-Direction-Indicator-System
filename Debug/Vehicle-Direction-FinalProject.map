@@ -1070,9 +1070,9 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .stab          0x0000a140      0x1c8 ./pwm_timer2.o
                                 0x468 (size before relaxing)
 
-.stabstr        0x00000000     0x65b1
+.stabstr        0x00000000     0x65c7
  *(.stabstr)
- .stabstr       0x00000000     0x65b1 ./Source/portable/MemMang/heap_1.o
+ .stabstr       0x00000000     0x65c7 ./Source/portable/MemMang/heap_1.o
 
 .stab.excl
  *(.stab.excl)
