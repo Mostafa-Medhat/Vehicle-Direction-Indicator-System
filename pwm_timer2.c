@@ -8,6 +8,8 @@
 
 #include "pwm_timer2.h"
 #include "avr/io.h"
+
+#include "avr/iom64.h"
 #include "gpio.h"
 #include "common_macros.h"
 
