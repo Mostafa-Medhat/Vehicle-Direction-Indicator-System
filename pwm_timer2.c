@@ -16,9 +16,9 @@
 
 void PWM_Timer2_Start(uint8 duty_cycle)
 {
-	TCNT2 = 0;    // Set Timer initial value to 0
-	OCR2  = duty_cycle; // Set Compare Value
-	GPIO_setupPinDirection(PWM2_PORT_ID, PWM2_PIN_ID, PIN_OUTPUT); //Setup the PWM pin as Output pin
+	TCNT2 = 0u;    /* Set Timer initial value to 0*/
+	OCR2  = duty_cycle; /* Set Compare Value*/
+	GPIO_setupPinDirection(PWM2_PORT_ID, PWM2_PIN_ID, PIN_OUTPUT); /*Setup the PWM pin as Output pin*/
 	/* Configure timer0 control register
 	 * 1. Non PWM mode FOC0=1
 	 * 2. CTC Mode WGM01=1 & WGM00=0
@@ -29,7 +29,7 @@ void PWM_Timer2_Start(uint8 duty_cycle)
 	SET_BIT(TCCR2,WGM01);
 	SET_BIT(TCCR2,COM01);
 
-	TCCR2 |= (FREQUENCY<<CS00);
+	TCCR2 |= ((unsigned char)FREQUENCY<<CS00);
 	/*
 	 * SET_BIT(TCCR0,CS00);
 	 * SET_BIT(TCCR0,CS01);

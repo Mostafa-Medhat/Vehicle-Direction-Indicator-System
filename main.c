@@ -19,10 +19,6 @@
 
 
 
-unsigned char timerCounter = 0;
-unsigned char DeviceFlag = 1;
-unsigned char HandlerFlag = 0;
-unsigned char state = 0;
 States_GroupType ButtonStateTest = {0,0,0,0};
 
 void Task1_GetData(void);

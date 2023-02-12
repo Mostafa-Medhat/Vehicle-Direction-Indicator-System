@@ -44,7 +44,7 @@
  *******************************************************************************/
 typedef enum
 {
-	PIN_INPUT,PIN_OUTPUT
+	PIN_INPUT = 0u,PIN_OUTPUT = 1u
 }GPIO_PinDirectionType;
 
 typedef enum

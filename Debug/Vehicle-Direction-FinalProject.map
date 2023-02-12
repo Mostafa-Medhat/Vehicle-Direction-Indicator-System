@@ -53,6 +53,7 @@ leftPORT            0x1               ./device.o
 rightPIN            0x1               ./device.o
 ignitionPIN         0x1               ./device.o
 readLeftData        0x1               ./device.o
+state               0x1               ./PollingDataClient.o
 task2ptr            0x2               ./main.o
 rightPORT           0x1               ./device.o
 readRightData       0x1               ./device.o
@@ -848,20 +849,18 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800231                LEDIntensity
  .data.hazardBtn_releaseFlag.1692
                 0x00800232        0x1 ./device.o
- .data.DeviceFlag
-                0x00800233        0x1 ./main.o
-                0x00800233                DeviceFlag
  *(.rodata)
  *(.rodata*)
  .rodata.dio_config_array
-                0x00800234       0x12 ./DIO_config.o
-                0x00800234                dio_config_array
+                0x00800233       0x12 ./DIO_config.o
+                0x00800233                dio_config_array
  *(.gnu.linkonce.d*)
                 0x00800246                . = ALIGN (0x2)
+ *fill*         0x00800245        0x1 00
                 0x00800246                _edata = .
                 0x00800246                PROVIDE (__data_end, .)
 
-.bss            0x00800246      0x6b5
+.bss            0x00800246      0x6b3
                 0x00800246                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800246        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm64.o
@@ -1003,44 +1002,37 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x008008e1                leftBtn_counter
  .bss.ButtonState.1693
                 0x008008e2        0x4 ./device.o
- .bss.timerCounter
-                0x008008e6        0x1 ./main.o
-                0x008008e6                timerCounter
- .bss.HandlerFlag
-                0x008008e7        0x1 ./main.o
-                0x008008e7                HandlerFlag
- .bss.state     0x008008e8        0x1 ./main.o
-                0x008008e8                state
  .bss.ButtonStateTest
-                0x008008e9        0x4 ./main.o
-                0x008008e9                ButtonStateTest
+                0x008008e6        0x4 ./main.o
+                0x008008e6                ButtonStateTest
  *(COMMON)
- COMMON         0x008008ed        0x0 ./PollingDataClient.o
- COMMON         0x008008ed        0xc ./device.o
-                0x008008ed                hazardPORT
-                0x008008ee                leftPORT
-                0x008008ef                rightPIN
-                0x008008f0                ignitionPIN
-                0x008008f1                readLeftData
-                0x008008f2                rightPORT
-                0x008008f3                readRightData
-                0x008008f4                leftPIN
-                0x008008f5                ignitionPORT
-                0x008008f6                hazardPIN
-                0x008008f7                readIgnitionData
-                0x008008f8                readHazadData
- COMMON         0x008008f9        0x2 ./main.o
-                0x008008f9                task2ptr
-                0x008008fb                PROVIDE (__bss_end, .)
+ COMMON         0x008008ea        0x1 ./PollingDataClient.o
+                0x008008ea                state
+ COMMON         0x008008eb        0xc ./device.o
+                0x008008eb                hazardPORT
+                0x008008ec                leftPORT
+                0x008008ed                rightPIN
+                0x008008ee                ignitionPIN
+                0x008008ef                readLeftData
+                0x008008f0                rightPORT
+                0x008008f1                readRightData
+                0x008008f2                leftPIN
+                0x008008f3                ignitionPORT
+                0x008008f4                hazardPIN
+                0x008008f5                readIgnitionData
+                0x008008f6                readHazadData
+ COMMON         0x008008f7        0x2 ./main.o
+                0x008008f7                task2ptr
+                0x008008f9                PROVIDE (__bss_end, .)
                 0x00007d8c                __data_load_start = LOADADDR (.data)
                 0x00007ed2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008008fb        0x0
-                0x008008fb                PROVIDE (__noinit_start, .)
+.noinit         0x008008f9        0x0
+                0x008008f9                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008008fb                PROVIDE (__noinit_end, .)
-                0x008008fb                _end = .
-                0x008008fb                PROVIDE (__heap_start, .)
+                0x008008f9                PROVIDE (__noinit_end, .)
+                0x008008f9                _end = .
+                0x008008f9                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -1058,7 +1050,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0xa464
+.stab           0x00000000     0xa434
  *(.stab)
  .stab          0x00000000      0x7d4 ./Source/portable/MemMang/heap_1.o
  .stab          0x000007d4      0x840 ./Source/portable/GCC/ATMega323/port.o
@@ -1085,16 +1077,16 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                                 0xb40 (size before relaxing)
  .stab          0x00009300      0xa14 ./gpio.o
                                 0xcb4 (size before relaxing)
- .stab          0x00009d14      0x3d8 ./main.o
-                                0x93c (size before relaxing)
- .stab          0x0000a0ec      0x1b0 ./pwm_timer0.o
+ .stab          0x00009d14      0x3a8 ./main.o
+                                0x90c (size before relaxing)
+ .stab          0x0000a0bc      0x1b0 ./pwm_timer0.o
                                 0x450 (size before relaxing)
- .stab          0x0000a29c      0x1c8 ./pwm_timer2.o
+ .stab          0x0000a26c      0x1c8 ./pwm_timer2.o
                                 0x468 (size before relaxing)
 
-.stabstr        0x00000000     0x6690
+.stabstr        0x00000000     0x6654
  *(.stabstr)
- .stabstr       0x00000000     0x6690 ./Source/portable/MemMang/heap_1.o
+ .stabstr       0x00000000     0x6654 ./Source/portable/MemMang/heap_1.o
 
 .stab.excl
  *(.stab.excl)

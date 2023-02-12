@@ -7,29 +7,29 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         00007d8c  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          000006b5  00800246  00800246  00007f66  2**0
+  2 .bss          000006b3  00800246  00800246  00007f66  2**0
                   ALLOC
-  3 .stab         0000a464  00000000  00000000  00007f68  2**2
+  3 .stab         0000a434  00000000  00000000  00007f68  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00006690  00000000  00000000  000123cc  2**0
+  4 .stabstr      00006654  00000000  00000000  0001239c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000160  00000000  00000000  00018a5c  2**0
+  5 .debug_aranges 00000160  00000000  00000000  000189f0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_pubnames 000001b6  00000000  00000000  00018bbc  2**0
+  6 .debug_pubnames 000001b6  00000000  00000000  00018b50  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   00001f0d  00000000  00000000  00018d72  2**0
+  7 .debug_info   00001f0d  00000000  00000000  00018d06  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 000010d2  00000000  00000000  0001ac7f  2**0
+  8 .debug_abbrev 000010d2  00000000  00000000  0001ac13  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   00001030  00000000  00000000  0001bd51  2**0
+  9 .debug_line   00001030  00000000  00000000  0001bce5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  00000180  00000000  00000000  0001cd84  2**2
+ 10 .debug_frame  00000180  00000000  00000000  0001cd18  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    000002e6  00000000  00000000  0001cf04  2**0
+ 11 .debug_str    000002e6  00000000  00000000  0001ce98  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    000008f6  00000000  00000000  0001d1ea  2**0
+ 12 .debug_loc    000008f6  00000000  00000000  0001d17e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000050  00000000  00000000  0001dae0  2**0
+ 13 .debug_ranges 00000050  00000000  00000000  0001da74  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -106,7 +106,7 @@ Disassembly of section .text:
       b6:	1d 92       	st	X+, r1
 
 000000b8 <.do_clear_bss_start>:
-      b8:	ab 3f       	cpi	r26, 0xFB	; 251
+      b8:	a9 3f       	cpi	r26, 0xF9	; 249
       ba:	b1 07       	cpc	r27, r17
       bc:	e1 f7       	brne	.-8      	; 0xb6 <.do_clear_bss_loop>
       be:	0e 94 38 3d 	call	0x7a70	; 0x7a70 <main>
@@ -17773,7 +17773,7 @@ void Handle_data(States_GroupType *Sates_Ptr)
 		{
 			state = (unsigned char)RIGHT_INDICATOR;
     6868:	81 e0       	ldi	r24, 0x01	; 1
-    686a:	80 93 e8 08 	sts	0x08E8, r24
+    686a:	80 93 ea 08 	sts	0x08EA, r24
     686e:	10 c0       	rjmp	.+32     	; 0x6890 <Handle_data+0x4a>
 		}
 		else if(Sates_Ptr->leftIndicator==TRUE)
@@ -17785,20 +17785,20 @@ void Handle_data(States_GroupType *Sates_Ptr)
 		{
 			state = LEFT_INDICATOR;
     687a:	82 e0       	ldi	r24, 0x02	; 2
-    687c:	80 93 e8 08 	sts	0x08E8, r24
+    687c:	80 93 ea 08 	sts	0x08EA, r24
     6880:	07 c0       	rjmp	.+14     	; 0x6890 <Handle_data+0x4a>
 		}
 		else{
 			state = NO_INDICATOR;
     6882:	83 e0       	ldi	r24, 0x03	; 3
-    6884:	80 93 e8 08 	sts	0x08E8, r24
+    6884:	80 93 ea 08 	sts	0x08EA, r24
     6888:	03 c0       	rjmp	.+6      	; 0x6890 <Handle_data+0x4a>
 		}
 	}
 	else{
 		state = NO_INDICATOR;
     688a:	83 e0       	ldi	r24, 0x03	; 3
-    688c:	80 93 e8 08 	sts	0x08E8, r24
+    688c:	80 93 ea 08 	sts	0x08EA, r24
 	}
 
 	if(Sates_Ptr->hazard_Btn==TRUE)
@@ -17810,7 +17810,7 @@ void Handle_data(States_GroupType *Sates_Ptr)
 	{
 		state = HAZARD_BUTTON;
     689a:	84 e0       	ldi	r24, 0x04	; 4
-    689c:	80 93 e8 08 	sts	0x08E8, r24
+    689c:	80 93 ea 08 	sts	0x08EA, r24
 	}
 
 
@@ -17836,7 +17836,7 @@ void State_Handler(void)
 
 
 	switch(state)
-    68b8:	80 91 e8 08 	lds	r24, 0x08E8
+    68b8:	80 91 ea 08 	lds	r24, 0x08EA
     68bc:	28 2f       	mov	r18, r24
     68be:	30 e0       	ldi	r19, 0x00	; 0
     68c0:	3a 83       	std	Y+2, r19	; 0x02
@@ -18306,43 +18306,45 @@ States_GroupType Get_Data(void)
     6bfa:	0f be       	out	0x3f, r0	; 63
     6bfc:	cd bf       	out	0x3d, r28	; 61
 	hazardPORT = dio_config_array[HAZARD_BUTTON_ID].port_id;
-    6bfe:	80 91 34 02 	lds	r24, 0x0234
-    6c02:	80 93 ed 08 	sts	0x08ED, r24
+    6bfe:	80 91 33 02 	lds	r24, 0x0233
+    6c02:	80 93 eb 08 	sts	0x08EB, r24
 	hazardPIN = dio_config_array[HAZARD_BUTTON_ID].pin_num;
-    6c06:	80 91 35 02 	lds	r24, 0x0235
-    6c0a:	80 93 f6 08 	sts	0x08F6, r24
+    6c06:	80 91 34 02 	lds	r24, 0x0234
+    6c0a:	80 93 f4 08 	sts	0x08F4, r24
+
+
 	ignitionPORT = dio_config_array[IGNITION_SWICH_ID].port_id;
-    6c0e:	80 91 3d 02 	lds	r24, 0x023D
-    6c12:	80 93 f5 08 	sts	0x08F5, r24
+    6c0e:	80 91 3c 02 	lds	r24, 0x023C
+    6c12:	80 93 f3 08 	sts	0x08F3, r24
 	ignitionPIN = dio_config_array[IGNITION_SWICH_ID].pin_num;
-    6c16:	80 91 3e 02 	lds	r24, 0x023E
-    6c1a:	80 93 f0 08 	sts	0x08F0, r24
+    6c16:	80 91 3d 02 	lds	r24, 0x023D
+    6c1a:	80 93 ee 08 	sts	0x08EE, r24
 
 	rightPORT = dio_config_array[RIGHT_INDICATOR_BUTTON_ID].port_id;
-    6c1e:	80 91 37 02 	lds	r24, 0x0237
-    6c22:	80 93 f2 08 	sts	0x08F2, r24
+    6c1e:	80 91 36 02 	lds	r24, 0x0236
+    6c22:	80 93 f0 08 	sts	0x08F0, r24
 	rightPIN = dio_config_array[RIGHT_INDICATOR_BUTTON_ID].pin_num;
-    6c26:	80 91 38 02 	lds	r24, 0x0238
-    6c2a:	80 93 ef 08 	sts	0x08EF, r24
+    6c26:	80 91 37 02 	lds	r24, 0x0237
+    6c2a:	80 93 ed 08 	sts	0x08ED, r24
 
 	leftPORT = dio_config_array[LEFT_INDICATOR_BUTTON_ID].port_id;
-    6c2e:	80 91 3a 02 	lds	r24, 0x023A
-    6c32:	80 93 ee 08 	sts	0x08EE, r24
+    6c2e:	80 91 39 02 	lds	r24, 0x0239
+    6c32:	80 93 ec 08 	sts	0x08EC, r24
 	leftPIN = dio_config_array[LEFT_INDICATOR_BUTTON_ID].pin_num;
-    6c36:	80 91 3b 02 	lds	r24, 0x023B
-    6c3a:	80 93 f4 08 	sts	0x08F4, r24
+    6c36:	80 91 3a 02 	lds	r24, 0x023A
+    6c3a:	80 93 f2 08 	sts	0x08F2, r24
 
 	static unsigned char hazardBtn_releaseFlag = TRUE;
 	static States_GroupType ButtonState = {0,0,0,0};
 
 	readHazadData = (unsigned char)GPIO_readPin(hazardPORT,hazardPIN);
-    6c3e:	80 91 ed 08 	lds	r24, 0x08ED
-    6c42:	90 91 f6 08 	lds	r25, 0x08F6
+    6c3e:	80 91 eb 08 	lds	r24, 0x08EB
+    6c42:	90 91 f4 08 	lds	r25, 0x08F4
     6c46:	69 2f       	mov	r22, r25
     6c48:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
-    6c4c:	80 93 f8 08 	sts	0x08F8, r24
+    6c4c:	80 93 f6 08 	sts	0x08F6, r24
 	if(readHazadData)
-    6c50:	80 91 f8 08 	lds	r24, 0x08F8
+    6c50:	80 91 f6 08 	lds	r24, 0x08F6
     6c54:	88 23       	and	r24, r24
     6c56:	51 f0       	breq	.+20     	; 0x6c6c <Get_Data+0x82>
 	{
@@ -18369,8 +18371,8 @@ States_GroupType Get_Data(void)
 	}
 
 	readIgnitionData = !GPIO_readPin(ignitionPORT, ignitionPIN);
-    6c76:	80 91 f5 08 	lds	r24, 0x08F5
-    6c7a:	90 91 f0 08 	lds	r25, 0x08F0
+    6c76:	80 91 f3 08 	lds	r24, 0x08F3
+    6c7a:	90 91 ee 08 	lds	r25, 0x08EE
     6c7e:	69 2f       	mov	r22, r25
     6c80:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
     6c84:	18 86       	std	Y+8, r1	; 0x08
@@ -18379,10 +18381,10 @@ States_GroupType Get_Data(void)
     6c8a:	81 e0       	ldi	r24, 0x01	; 1
     6c8c:	88 87       	std	Y+8, r24	; 0x08
     6c8e:	88 85       	ldd	r24, Y+8	; 0x08
-    6c90:	80 93 f7 08 	sts	0x08F7, r24
+    6c90:	80 93 f5 08 	sts	0x08F5, r24
 	readRightData = !GPIO_readPin(rightPORT , rightPIN);
-    6c94:	80 91 f2 08 	lds	r24, 0x08F2
-    6c98:	90 91 ef 08 	lds	r25, 0x08EF
+    6c94:	80 91 f0 08 	lds	r24, 0x08F0
+    6c98:	90 91 ed 08 	lds	r25, 0x08ED
     6c9c:	69 2f       	mov	r22, r25
     6c9e:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
     6ca2:	1f 82       	std	Y+7, r1	; 0x07
@@ -18391,10 +18393,10 @@ States_GroupType Get_Data(void)
     6ca8:	81 e0       	ldi	r24, 0x01	; 1
     6caa:	8f 83       	std	Y+7, r24	; 0x07
     6cac:	8f 81       	ldd	r24, Y+7	; 0x07
-    6cae:	80 93 f3 08 	sts	0x08F3, r24
+    6cae:	80 93 f1 08 	sts	0x08F1, r24
 	readLeftData = !GPIO_readPin(leftPORT , leftPIN);
-    6cb2:	80 91 ee 08 	lds	r24, 0x08EE
-    6cb6:	90 91 f4 08 	lds	r25, 0x08F4
+    6cb2:	80 91 ec 08 	lds	r24, 0x08EC
+    6cb6:	90 91 f2 08 	lds	r25, 0x08F2
     6cba:	69 2f       	mov	r22, r25
     6cbc:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
     6cc0:	1e 82       	std	Y+6, r1	; 0x06
@@ -18403,13 +18405,13 @@ States_GroupType Get_Data(void)
     6cc6:	81 e0       	ldi	r24, 0x01	; 1
     6cc8:	8e 83       	std	Y+6, r24	; 0x06
     6cca:	8e 81       	ldd	r24, Y+6	; 0x06
-    6ccc:	80 93 f1 08 	sts	0x08F1, r24
+    6ccc:	80 93 ef 08 	sts	0x08EF, r24
 	if(readRightData && readIgnitionData){
-    6cd0:	80 91 f3 08 	lds	r24, 0x08F3
+    6cd0:	80 91 f1 08 	lds	r24, 0x08F1
     6cd4:	88 23       	and	r24, r24
     6cd6:	09 f4       	brne	.+2      	; 0x6cda <Get_Data+0xf0>
     6cd8:	4b c0       	rjmp	.+150    	; 0x6d70 <Get_Data+0x186>
-    6cda:	80 91 f7 08 	lds	r24, 0x08F7
+    6cda:	80 91 f5 08 	lds	r24, 0x08F5
     6cde:	88 23       	and	r24, r24
     6ce0:	09 f4       	brne	.+2      	; 0x6ce4 <Get_Data+0xfa>
     6ce2:	46 c0       	rjmp	.+140    	; 0x6d70 <Get_Data+0x186>
@@ -18431,8 +18433,8 @@ States_GroupType Get_Data(void)
 		rightBtn_counter = 0u;
     6d02:	10 92 e0 08 	sts	0x08E0, r1
 		readIgnitionData = !GPIO_readPin(ignitionPORT, ignitionPIN);
-    6d06:	80 91 f5 08 	lds	r24, 0x08F5
-    6d0a:	90 91 f0 08 	lds	r25, 0x08F0
+    6d06:	80 91 f3 08 	lds	r24, 0x08F3
+    6d0a:	90 91 ee 08 	lds	r25, 0x08EE
     6d0e:	69 2f       	mov	r22, r25
     6d10:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
     6d14:	1d 82       	std	Y+5, r1	; 0x05
@@ -18441,17 +18443,17 @@ States_GroupType Get_Data(void)
     6d1a:	81 e0       	ldi	r24, 0x01	; 1
     6d1c:	8d 83       	std	Y+5, r24	; 0x05
     6d1e:	8d 81       	ldd	r24, Y+5	; 0x05
-    6d20:	80 93 f7 08 	sts	0x08F7, r24
+    6d20:	80 93 f5 08 	sts	0x08F5, r24
 		if(readIgnitionData){
-    6d24:	80 91 f7 08 	lds	r24, 0x08F7
+    6d24:	80 91 f5 08 	lds	r24, 0x08F5
     6d28:	88 23       	and	r24, r24
     6d2a:	e9 f0       	breq	.+58     	; 0x6d66 <Get_Data+0x17c>
 			ButtonState.ignition_key = 1u;
     6d2c:	81 e0       	ldi	r24, 0x01	; 1
     6d2e:	80 93 e2 08 	sts	0x08E2, r24
 			readRightData = !GPIO_readPin(rightPORT , rightPIN);
-    6d32:	80 91 f2 08 	lds	r24, 0x08F2
-    6d36:	90 91 ef 08 	lds	r25, 0x08EF
+    6d32:	80 91 f0 08 	lds	r24, 0x08F0
+    6d36:	90 91 ed 08 	lds	r25, 0x08ED
     6d3a:	69 2f       	mov	r22, r25
     6d3c:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
     6d40:	1c 82       	std	Y+4, r1	; 0x04
@@ -18460,9 +18462,9 @@ States_GroupType Get_Data(void)
     6d46:	81 e0       	ldi	r24, 0x01	; 1
     6d48:	8c 83       	std	Y+4, r24	; 0x04
     6d4a:	8c 81       	ldd	r24, Y+4	; 0x04
-    6d4c:	80 93 f3 08 	sts	0x08F3, r24
+    6d4c:	80 93 f1 08 	sts	0x08F1, r24
 			if(readRightData){
-    6d50:	80 91 f3 08 	lds	r24, 0x08F3
+    6d50:	80 91 f1 08 	lds	r24, 0x08F1
     6d54:	88 23       	and	r24, r24
     6d56:	21 f0       	breq	.+8      	; 0x6d60 <Get_Data+0x176>
 				ButtonState.rightIndicator = 1u;
@@ -18487,11 +18489,11 @@ States_GroupType Get_Data(void)
 
 	}
 	else if(readLeftData && readIgnitionData){
-    6d70:	80 91 f1 08 	lds	r24, 0x08F1
+    6d70:	80 91 ef 08 	lds	r24, 0x08EF
     6d74:	88 23       	and	r24, r24
     6d76:	09 f4       	brne	.+2      	; 0x6d7a <Get_Data+0x190>
     6d78:	4b c0       	rjmp	.+150    	; 0x6e10 <Get_Data+0x226>
-    6d7a:	80 91 f7 08 	lds	r24, 0x08F7
+    6d7a:	80 91 f5 08 	lds	r24, 0x08F5
     6d7e:	88 23       	and	r24, r24
     6d80:	09 f4       	brne	.+2      	; 0x6d84 <Get_Data+0x19a>
     6d82:	46 c0       	rjmp	.+140    	; 0x6e10 <Get_Data+0x226>
@@ -18512,8 +18514,8 @@ States_GroupType Get_Data(void)
 			leftBtn_counter = 0u;
     6da2:	10 92 e1 08 	sts	0x08E1, r1
 			readIgnitionData = !GPIO_readPin(ignitionPORT, ignitionPIN);
-    6da6:	80 91 f5 08 	lds	r24, 0x08F5
-    6daa:	90 91 f0 08 	lds	r25, 0x08F0
+    6da6:	80 91 f3 08 	lds	r24, 0x08F3
+    6daa:	90 91 ee 08 	lds	r25, 0x08EE
     6dae:	69 2f       	mov	r22, r25
     6db0:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
     6db4:	1b 82       	std	Y+3, r1	; 0x03
@@ -18522,17 +18524,17 @@ States_GroupType Get_Data(void)
     6dba:	81 e0       	ldi	r24, 0x01	; 1
     6dbc:	8b 83       	std	Y+3, r24	; 0x03
     6dbe:	8b 81       	ldd	r24, Y+3	; 0x03
-    6dc0:	80 93 f7 08 	sts	0x08F7, r24
+    6dc0:	80 93 f5 08 	sts	0x08F5, r24
 		if(readIgnitionData){
-    6dc4:	80 91 f7 08 	lds	r24, 0x08F7
+    6dc4:	80 91 f5 08 	lds	r24, 0x08F5
     6dc8:	88 23       	and	r24, r24
     6dca:	e9 f0       	breq	.+58     	; 0x6e06 <Get_Data+0x21c>
 			ButtonState.ignition_key = 1u;
     6dcc:	81 e0       	ldi	r24, 0x01	; 1
     6dce:	80 93 e2 08 	sts	0x08E2, r24
 			readLeftData = !GPIO_readPin(leftPORT , leftPIN);
-    6dd2:	80 91 ee 08 	lds	r24, 0x08EE
-    6dd6:	90 91 f4 08 	lds	r25, 0x08F4
+    6dd2:	80 91 ec 08 	lds	r24, 0x08EC
+    6dd6:	90 91 f2 08 	lds	r25, 0x08F2
     6dda:	69 2f       	mov	r22, r25
     6ddc:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
     6de0:	1a 82       	std	Y+2, r1	; 0x02
@@ -18541,9 +18543,9 @@ States_GroupType Get_Data(void)
     6de6:	81 e0       	ldi	r24, 0x01	; 1
     6de8:	8a 83       	std	Y+2, r24	; 0x02
     6dea:	8a 81       	ldd	r24, Y+2	; 0x02
-    6dec:	80 93 f1 08 	sts	0x08F1, r24
+    6dec:	80 93 ef 08 	sts	0x08EF, r24
 			if(readLeftData){
-    6df0:	80 91 f1 08 	lds	r24, 0x08F1
+    6df0:	80 91 ef 08 	lds	r24, 0x08EF
     6df4:	88 23       	and	r24, r24
     6df6:	21 f0       	breq	.+8      	; 0x6e00 <Get_Data+0x216>
 				ButtonState.leftIndicator = 1u;
@@ -18567,7 +18569,7 @@ States_GroupType Get_Data(void)
 		}
 	}
 	else if(readIgnitionData){
-    6e10:	80 91 f7 08 	lds	r24, 0x08F7
+    6e10:	80 91 f5 08 	lds	r24, 0x08F5
     6e14:	88 23       	and	r24, r24
     6e16:	81 f1       	breq	.+96     	; 0x6e78 <Get_Data+0x28e>
 		ignitionBtn_counter ++;
@@ -18584,8 +18586,8 @@ States_GroupType Get_Data(void)
     6e32:	41 f5       	brne	.+80     	; 0x6e84 <Get_Data+0x29a>
 		{
 		    readIgnitionData = !GPIO_readPin(ignitionPORT, ignitionPIN);
-    6e34:	80 91 f5 08 	lds	r24, 0x08F5
-    6e38:	90 91 f0 08 	lds	r25, 0x08F0
+    6e34:	80 91 f3 08 	lds	r24, 0x08F3
+    6e38:	90 91 ee 08 	lds	r25, 0x08EE
     6e3c:	69 2f       	mov	r22, r25
     6e3e:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <GPIO_readPin>
     6e42:	19 82       	std	Y+1, r1	; 0x01
@@ -18594,9 +18596,9 @@ States_GroupType Get_Data(void)
     6e48:	81 e0       	ldi	r24, 0x01	; 1
     6e4a:	89 83       	std	Y+1, r24	; 0x01
     6e4c:	89 81       	ldd	r24, Y+1	; 0x01
-    6e4e:	80 93 f7 08 	sts	0x08F7, r24
+    6e4e:	80 93 f5 08 	sts	0x08F5, r24
 		if(readIgnitionData){
-    6e52:	80 91 f7 08 	lds	r24, 0x08F7
+    6e52:	80 91 f5 08 	lds	r24, 0x08F5
     6e56:	88 23       	and	r24, r24
     6e58:	41 f0       	breq	.+16     	; 0x6e6a <Get_Data+0x280>
 			ButtonState.ignition_key = 1u;
@@ -20208,7 +20210,7 @@ void DIO_init(void)
     77ca:	82 0f       	add	r24, r18
     77cc:	93 1f       	adc	r25, r19
     77ce:	fc 01       	movw	r30, r24
-    77d0:	ec 5c       	subi	r30, 0xCC	; 204
+    77d0:	ed 5c       	subi	r30, 0xCD	; 205
     77d2:	fd 4f       	sbci	r31, 0xFD	; 253
     77d4:	80 81       	ld	r24, Z
     77d6:	8b 83       	std	Y+3, r24	; 0x03
@@ -20222,7 +20224,7 @@ void DIO_init(void)
     77e4:	82 0f       	add	r24, r18
     77e6:	93 1f       	adc	r25, r19
     77e8:	fc 01       	movw	r30, r24
-    77ea:	eb 5c       	subi	r30, 0xCB	; 203
+    77ea:	ec 5c       	subi	r30, 0xCC	; 204
     77ec:	fd 4f       	sbci	r31, 0xFD	; 253
     77ee:	80 81       	ld	r24, Z
     77f0:	8a 83       	std	Y+2, r24	; 0x02
@@ -20236,7 +20238,7 @@ void DIO_init(void)
     77fe:	82 0f       	add	r24, r18
     7800:	93 1f       	adc	r25, r19
     7802:	fc 01       	movw	r30, r24
-    7804:	ea 5c       	subi	r30, 0xCA	; 202
+    7804:	eb 5c       	subi	r30, 0xCB	; 203
     7806:	fd 4f       	sbci	r31, 0xFD	; 253
     7808:	80 81       	ld	r24, Z
     780a:	89 83       	std	Y+1, r24	; 0x01
@@ -20344,7 +20346,7 @@ void DIO_ChannelGroupWrite(ChannelGroupType channel_group_variabe , uint8_t data
     78a6:	82 0f       	add	r24, r18
     78a8:	93 1f       	adc	r25, r19
     78aa:	fc 01       	movw	r30, r24
-    78ac:	ec 5c       	subi	r30, 0xCC	; 204
+    78ac:	ed 5c       	subi	r30, 0xCD	; 205
     78ae:	fd 4f       	sbci	r31, 0xFD	; 253
     78b0:	80 81       	ld	r24, Z
     78b2:	8b 83       	std	Y+3, r24	; 0x03
@@ -20358,7 +20360,7 @@ void DIO_ChannelGroupWrite(ChannelGroupType channel_group_variabe , uint8_t data
     78c0:	82 0f       	add	r24, r18
     78c2:	93 1f       	adc	r25, r19
     78c4:	fc 01       	movw	r30, r24
-    78c6:	eb 5c       	subi	r30, 0xCB	; 203
+    78c6:	ec 5c       	subi	r30, 0xCC	; 204
     78c8:	fd 4f       	sbci	r31, 0xFD	; 253
     78ca:	80 81       	ld	r24, Z
     78cc:	8a 83       	std	Y+2, r24	; 0x02
@@ -20507,7 +20509,7 @@ void DIO_ChannelGroupRead(ChannelGroupType channel_group_variabe ,uint8_t * data
     79b6:	82 0f       	add	r24, r18
     79b8:	93 1f       	adc	r25, r19
     79ba:	fc 01       	movw	r30, r24
-    79bc:	ec 5c       	subi	r30, 0xCC	; 204
+    79bc:	ed 5c       	subi	r30, 0xCD	; 205
     79be:	fd 4f       	sbci	r31, 0xFD	; 253
     79c0:	80 81       	ld	r24, Z
     79c2:	8b 83       	std	Y+3, r24	; 0x03
@@ -20521,7 +20523,7 @@ void DIO_ChannelGroupRead(ChannelGroupType channel_group_variabe ,uint8_t * data
     79d0:	82 0f       	add	r24, r18
     79d2:	93 1f       	adc	r25, r19
     79d4:	fc 01       	movw	r30, r24
-    79d6:	eb 5c       	subi	r30, 0xCB	; 203
+    79d6:	ec 5c       	subi	r30, 0xCC	; 204
     79d8:	fd 4f       	sbci	r31, 0xFD	; 253
     79da:	80 81       	ld	r24, Z
     79dc:	8a 83       	std	Y+2, r24	; 0x02
@@ -20642,7 +20644,7 @@ int main(void)
     7a8c:	9d e3       	ldi	r25, 0x3D	; 61
     7a8e:	2d e0       	ldi	r18, 0x0D	; 13
     7a90:	31 e0       	ldi	r19, 0x01	; 1
-    7a92:	e9 ef       	ldi	r30, 0xF9	; 249
+    7a92:	e7 ef       	ldi	r30, 0xF7	; 247
     7a94:	f8 e0       	ldi	r31, 0x08	; 8
     7a96:	b9 01       	movw	r22, r18
     7a98:	45 e5       	ldi	r20, 0x55	; 85
@@ -20753,10 +20755,10 @@ void Task1_GetData(void)
     7b58:	0e 94 f5 35 	call	0x6bea	; 0x6bea <Get_Data>
     7b5c:	dc 01       	movw	r26, r24
     7b5e:	cb 01       	movw	r24, r22
-    7b60:	80 93 e9 08 	sts	0x08E9, r24
-    7b64:	90 93 ea 08 	sts	0x08EA, r25
-    7b68:	a0 93 eb 08 	sts	0x08EB, r26
-    7b6c:	b0 93 ec 08 	sts	0x08EC, r27
+    7b60:	80 93 e6 08 	sts	0x08E6, r24
+    7b64:	90 93 e7 08 	sts	0x08E7, r25
+    7b68:	a0 93 e8 08 	sts	0x08E8, r26
+    7b6c:	b0 93 e9 08 	sts	0x08E9, r27
 }
     7b70:	cf 91       	pop	r28
     7b72:	df 91       	pop	r29
@@ -20773,7 +20775,7 @@ void Task2_HandleData(void)
 	while(1)
 	{
 		Handle_data(&ButtonStateTest);
-    7b7e:	89 ee       	ldi	r24, 0xE9	; 233
+    7b7e:	86 ee       	ldi	r24, 0xE6	; 230
     7b80:	98 e0       	ldi	r25, 0x08	; 8
     7b82:	0e 94 23 34 	call	0x6846	; 0x6846 <Handle_data>
     7b86:	fb cf       	rjmp	.-10     	; 0x7b7e <Task2_HandleData+0x8>
@@ -20865,16 +20867,16 @@ void PWM_Timer0_Start(uint8 duty_cycle)
     7bfc:	89 83       	std	Y+1, r24	; 0x01
 	/*	The function responsible for trigger the Timer0 with the PWM Mode. */
 
-	TCNT0 = 0; //Set Timer Initial value
+	TCNT0 = 0u; /*Set Timer Initial value*/
     7bfe:	e2 e5       	ldi	r30, 0x52	; 82
     7c00:	f0 e0       	ldi	r31, 0x00	; 0
     7c02:	10 82       	st	Z, r1
-	OCR0 = duty_cycle; // Set Compare Value
+	OCR0 = duty_cycle; /* Set Compare Value*/
     7c04:	e1 e5       	ldi	r30, 0x51	; 81
     7c06:	f0 e0       	ldi	r31, 0x00	; 0
     7c08:	89 81       	ldd	r24, Y+1	; 0x01
     7c0a:	80 83       	st	Z, r24
-	GPIO_setupPinDirection(PWM_PORT_ID, PWM_PIN_ID, PIN_OUTPUT); //Setup the PWM pin as Output pin
+	GPIO_setupPinDirection(PWM_PORT_ID, PWM_PIN_ID, PIN_OUTPUT); /*Setup the PWM pin as Output pin*/
     7c0c:	81 e0       	ldi	r24, 0x01	; 1
     7c0e:	64 e0       	ldi	r22, 0x04	; 4
     7c10:	41 e0       	ldi	r20, 0x01	; 1
@@ -20908,7 +20910,7 @@ void PWM_Timer0_Start(uint8 duty_cycle)
     7c3a:	80 81       	ld	r24, Z
     7c3c:	80 62       	ori	r24, 0x20	; 32
     7c3e:	8c 93       	st	X, r24
-	SET_BIT(TCCR0,CS00);
+	TCCR0 |= ((unsigned char)FREQUENCY<<CS00);
     7c40:	a3 e5       	ldi	r26, 0x53	; 83
     7c42:	b0 e0       	ldi	r27, 0x00	; 0
     7c44:	e3 e5       	ldi	r30, 0x53	; 83
@@ -20916,6 +20918,11 @@ void PWM_Timer0_Start(uint8 duty_cycle)
     7c48:	80 81       	ld	r24, Z
     7c4a:	81 60       	ori	r24, 0x01	; 1
     7c4c:	8c 93       	st	X, r24
+	/*
+	 * SET_BIT(TCCR0,CS00);
+	 * SET_BIT(TCCR0,CS01);
+	 *
+	 */
 }
     7c4e:	0f 90       	pop	r0
     7c50:	cf 91       	pop	r28
@@ -20935,16 +20942,16 @@ void PWM_Timer2_Start(uint8 duty_cycle)
     7c5c:	cd b7       	in	r28, 0x3d	; 61
     7c5e:	de b7       	in	r29, 0x3e	; 62
     7c60:	89 83       	std	Y+1, r24	; 0x01
-	TCNT2 = 0;    // Set Timer initial value to 0
+	TCNT2 = 0u;    /* Set Timer initial value to 0*/
     7c62:	e4 e4       	ldi	r30, 0x44	; 68
     7c64:	f0 e0       	ldi	r31, 0x00	; 0
     7c66:	10 82       	st	Z, r1
-	OCR2  = duty_cycle; // Set Compare Value
+	OCR2  = duty_cycle; /* Set Compare Value*/
     7c68:	e3 e4       	ldi	r30, 0x43	; 67
     7c6a:	f0 e0       	ldi	r31, 0x00	; 0
     7c6c:	89 81       	ldd	r24, Y+1	; 0x01
     7c6e:	80 83       	st	Z, r24
-	GPIO_setupPinDirection(PWM2_PORT_ID, PWM2_PIN_ID, PIN_OUTPUT); //Setup the PWM pin as Output pin
+	GPIO_setupPinDirection(PWM2_PORT_ID, PWM2_PIN_ID, PIN_OUTPUT); /*Setup the PWM pin as Output pin*/
     7c70:	81 e0       	ldi	r24, 0x01	; 1
     7c72:	67 e0       	ldi	r22, 0x07	; 7
     7c74:	41 e0       	ldi	r20, 0x01	; 1
@@ -20978,7 +20985,8 @@ void PWM_Timer2_Start(uint8 duty_cycle)
     7c9e:	80 81       	ld	r24, Z
     7ca0:	80 62       	ori	r24, 0x20	; 32
     7ca2:	8c 93       	st	X, r24
-	SET_BIT(TCCR2,CS00);
+
+	TCCR2 |= ((unsigned char)FREQUENCY<<CS00);
     7ca4:	a5 e4       	ldi	r26, 0x45	; 69
     7ca6:	b0 e0       	ldi	r27, 0x00	; 0
     7ca8:	e5 e4       	ldi	r30, 0x45	; 69
@@ -20986,6 +20994,11 @@ void PWM_Timer2_Start(uint8 duty_cycle)
     7cac:	80 81       	ld	r24, Z
     7cae:	81 60       	ori	r24, 0x01	; 1
     7cb0:	8c 93       	st	X, r24
+	/*
+	 * SET_BIT(TCCR0,CS00);
+	 * SET_BIT(TCCR0,CS01);
+	 *
+	 */
 }
     7cb2:	0f 90       	pop	r0
     7cb4:	cf 91       	pop	r28
