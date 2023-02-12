@@ -47,7 +47,7 @@ States_GroupType Get_Data(void)
 		rightBtn_counter++;
 		if(rightBtn_counter % 5 == 0)
 		{
-		rightBtn_counter = 0;
+		rightBtn_counter = 0u;
 		if(!GPIO_readPin(dio_config_array[IGNITION_SWICH_ID].port_id,dio_config_array[IGNITION_SWICH_ID].pin_num)){
 			ButtonState.ignition_key = 1;
 			if(!GPIO_readPin(dio_config_array[RIGHT_INDICATOR_BUTTON_ID].port_id,dio_config_array[RIGHT_INDICATOR_BUTTON_ID].pin_num)){
@@ -97,13 +97,14 @@ States_GroupType Get_Data(void)
 			ButtonState.ignition_key = 0;
 			ButtonState.rightIndicator = 0;
 			ButtonState.leftIndicator = 0;
+
 		}
 	}
 	}
 	else{
-		ButtonState.ignition_key = 0;
-		ButtonState.rightIndicator = 0;
-		ButtonState.leftIndicator = 0;
+		ButtonState.ignition_key = 0u;
+		ButtonState.rightIndicator = 0u;
+		ButtonState.leftIndicator = 0u;
 	}
 
 	return ButtonState;
