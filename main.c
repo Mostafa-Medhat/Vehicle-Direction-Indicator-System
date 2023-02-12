@@ -15,6 +15,7 @@
 #include "Timer1_PWM.h"
 #include "pwm_timer0.h"
 #include "pwm_timer2.h"
+//#include "avr/iom64.h"
 
 
 unsigned char timerCounter = 0;
@@ -33,22 +34,18 @@ void Task3_ToggleLED(void);
 void Task4_PWM(void);
 
 
-TimerHandle_t xTimer2;
+//TimerHandle_t xTimer2;
 
 int main(void)
 {
-	DIO_init();
-	//	timer1_PWM_Init();
-
-	SREG |=(1<<7);			// I bit Enabled
+	DIO_init();  //proxy pattern
 
 
+	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);/* polling Handle data function*/
 
-	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);
-
-	TimerHandle_t xTimer1 = xTimerCreate("timer1",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData);
-	xTimer2 = xTimerCreate("timer2",500/portTICK_PERIOD_MS,pdTRUE,0,Task3_ToggleLED);
-	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM);
+	TimerHandle_t xTimer1 = xTimerCreate("timer1",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData); /* simulate poller timer */
+	TimerHandle_t xTimer2 = xTimerCreate("timer2",500/portTICK_PERIOD_MS,pdTRUE,0,Task3_ToggleLED);
+	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM); /*500/16(*5%)=31.26ms = 30ms*/
 
 
 	xTimerStart(xTimer1, 1);
@@ -89,15 +86,15 @@ void Task3_ToggleLED(void)
  */
 void Task4_PWM(void)
 {
-	if(ToggleLED == TRUE && leftIntensity < 204)
+	if(ToggleLED == TRUE && LEDIntensity < 204) /*204 = 80%*/
 	{
-		leftIntensity+=13;
-		rightIntensity+=13;
+		LEDIntensity+=13;
+
 	}
-	else if (ToggleLED == FALSE && leftIntensity > 25)
+	else if (ToggleLED == FALSE && LEDIntensity > 25)/*25 = 10%*/
 	{
-		leftIntensity-=13;
-		rightIntensity-=13;
+		LEDIntensity-=13;
+
 	}
 }
 
