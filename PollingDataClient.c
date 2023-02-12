@@ -18,8 +18,8 @@
 //uint8_t ignitionState = LOGIC_LOW;
 unsigned char state;
 unsigned char ToggleLED = 0;
-unsigned char leftIntensity =  26;
-unsigned char rightIntensity = 26;
+unsigned char LEDIntensity =  26;
+
 
 
 
@@ -83,19 +83,19 @@ void State_Handler()
 void RightLED_Blink(void)
 {
 	PWM_Timer0_Start(0);
-	PWM_Timer2_Start(rightIntensity);
+	PWM_Timer2_Start(LEDIntensity);
 }
 
 
 void LeftLED_Blink(void)
 {
 	PWM_Timer2_Start(0);
-	PWM_Timer0_Start(leftIntensity);
+	PWM_Timer0_Start(LEDIntensity);
 }
 void BothLEDS_Blink(void)
 {
-	PWM_Timer0_Start(leftIntensity);
-	PWM_Timer2_Start(rightIntensity);
+	PWM_Timer0_Start(LEDIntensity);
+	PWM_Timer2_Start(LEDIntensity);
 }
 
 void NoLED_Blink(void){

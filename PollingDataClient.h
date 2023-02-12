@@ -15,8 +15,8 @@
 #define HAZARD_BUTTON	4
 
 extern unsigned char ToggleLED;
-extern unsigned char leftIntensity;
-extern unsigned char rightIntensity;
+extern unsigned char LEDIntensity;
+
 
 
 void Handle_data(States_GroupType *Sates_Ptr);
