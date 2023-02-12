@@ -20521,7 +20521,7 @@ int main(void)
     798c:	0e 94 5a 3b 	call	0x76b4	; 0x76b4 <DIO_init>
 
 
-	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);/* polling Handle data function*/
+	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);	/* polling Handle data function*/
     7990:	8e e3       	ldi	r24, 0x3E	; 62
     7992:	9d e3       	ldi	r25, 0x3D	; 61
     7994:	2d e0       	ldi	r18, 0x0D	; 13
@@ -20537,7 +20537,7 @@ int main(void)
     79a8:	7f 01       	movw	r14, r30
     79aa:	0e 94 d7 1a 	call	0x35ae	; 0x35ae <xTaskCreate>
 
-	TimerHandle_t xTimer1 = xTimerCreate("timer1",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData); /* simulate poller timer */
+	TimerHandle_t xTimer1 = xTimerCreate("timer1",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData);	 /* simulate poller timer */
     79ae:	eb e2       	ldi	r30, 0x2B	; 43
     79b0:	fd e3       	ldi	r31, 0x3D	; 61
     79b2:	83 e1       	ldi	r24, 0x13	; 19
@@ -20565,7 +20565,7 @@ int main(void)
     79de:	0e 94 f0 2e 	call	0x5de0	; 0x5de0 <xTimerCreate>
     79e2:	9c 83       	std	Y+4, r25	; 0x04
     79e4:	8b 83       	std	Y+3, r24	; 0x03
-	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM); /*500/16(*5%)=31.26ms = 30ms*/
+	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM); 		/*500/16(*5%)=31.26ms = 30ms*/
     79e6:	ea e5       	ldi	r30, 0x5A	; 90
     79e8:	fd e3       	ldi	r31, 0x3D	; 61
     79ea:	81 e2       	ldi	r24, 0x21	; 33
@@ -20792,7 +20792,8 @@ void PWM_Timer0_Start(uint8 duty_cycle)
     7b40:	80 81       	ld	r24, Z
     7b42:	80 62       	ori	r24, 0x20	; 32
     7b44:	8c 93       	st	X, r24
-	SET_BIT(TCCR0,CS00);
+
+	TCCR0 |= (FREQUENCY<<CS00);
     7b46:	a3 e5       	ldi	r26, 0x53	; 83
     7b48:	b0 e0       	ldi	r27, 0x00	; 0
     7b4a:	e3 e5       	ldi	r30, 0x53	; 83
@@ -20800,6 +20801,9 @@ void PWM_Timer0_Start(uint8 duty_cycle)
     7b4e:	80 81       	ld	r24, Z
     7b50:	81 60       	ori	r24, 0x01	; 1
     7b52:	8c 93       	st	X, r24
+//	SET_BIT(TCCR0,CS00);
+//	SET_BIT(TCCR0,CS01);
+
 }
     7b54:	0f 90       	pop	r0
     7b56:	cf 91       	pop	r28
@@ -20862,7 +20866,9 @@ void PWM_Timer2_Start(uint8 duty_cycle)
     7ba4:	80 81       	ld	r24, Z
     7ba6:	80 62       	ori	r24, 0x20	; 32
     7ba8:	8c 93       	st	X, r24
-	SET_BIT(TCCR2,CS00);
+
+
+	TCCR2 |= (FREQUENCY<<CS00);
     7baa:	a5 e4       	ldi	r26, 0x45	; 69
     7bac:	b0 e0       	ldi	r27, 0x00	; 0
     7bae:	e5 e4       	ldi	r30, 0x45	; 69
@@ -20870,6 +20876,10 @@ void PWM_Timer2_Start(uint8 duty_cycle)
     7bb2:	80 81       	ld	r24, Z
     7bb4:	81 60       	ori	r24, 0x01	; 1
     7bb6:	8c 93       	st	X, r24
+
+//	SET_BIT(TCCR2,CS00);
+//	SET_BIT(TCCR2,CS01);
+
 }
     7bb8:	0f 90       	pop	r0
     7bba:	cf 91       	pop	r28

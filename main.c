@@ -15,7 +15,7 @@
 #include "Timer1_PWM.h"
 #include "pwm_timer0.h"
 #include "pwm_timer2.h"
-//#include "avr/iom64.h"
+#include "avr/iom64.h"
 
 
 unsigned char timerCounter = 0;
@@ -41,11 +41,11 @@ int main(void)
 	DIO_init();  //proxy pattern
 
 
-	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);/* polling Handle data function*/
+	xTaskCreate(Task2_HandleData,"third",configMINIMAL_STACK_SIZE,NULL,0,&task2ptr);	/* polling Handle data function*/
 
-	TimerHandle_t xTimer1 = xTimerCreate("timer1",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData); /* simulate poller timer */
+	TimerHandle_t xTimer1 = xTimerCreate("timer1",10/portTICK_PERIOD_MS,pdTRUE,0,Task1_GetData);	 /* simulate poller timer */
 	TimerHandle_t xTimer2 = xTimerCreate("timer2",500/portTICK_PERIOD_MS,pdTRUE,0,Task3_ToggleLED);
-	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM); /*500/16(*5%)=31.26ms = 30ms*/
+	TimerHandle_t xTimer3 = xTimerCreate("timer3",30/portTICK_PERIOD_MS,pdTRUE,0,Task4_PWM); 		/*500/16(*5%)=31.26ms = 30ms*/
 
 
 	xTimerStart(xTimer1, 1);
