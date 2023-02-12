@@ -49,7 +49,7 @@ typedef enum
 
 typedef enum
 {
-	PORT_INPUT,PORT_OUTPUT=0xFF
+	PORT_INPUT= 0x00,PORT_OUTPUT=0xFF
 }GPIO_PortDirectionType;
 
 
