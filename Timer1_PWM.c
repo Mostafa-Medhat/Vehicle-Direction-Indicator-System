@@ -6,6 +6,7 @@
  */
 
 #include <avr/io.h>
+#include "avr/iom64.h"
 #include "Timer1_PWM.h"
 
 unsigned long TopValue = 0;
@@ -18,6 +19,7 @@ void timer1_PWM_Init(void){
 //	OCR1A = 20000;
 //	OCR1B = 45500;
 	DDRB |= (1<<PB5) | (1<<PB6);
+
 
 }
 
