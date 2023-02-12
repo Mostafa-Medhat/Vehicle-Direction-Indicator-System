@@ -43,6 +43,8 @@ States_GroupType Get_Data(void)
 {
 	hazardPORT = dio_config_array[HAZARD_BUTTON_ID].port_id;
 	hazardPIN = dio_config_array[HAZARD_BUTTON_ID].pin_num;
+
+
 	ignitionPORT = dio_config_array[IGNITION_SWICH_ID].port_id;
 	ignitionPIN = dio_config_array[IGNITION_SWICH_ID].pin_num;
 
