@@ -1,4 +1,4 @@
-# Vehicle-Direction-FinalProject
+# Vehicle-Direction-FinalProject Based on Design Patterns and RTOS
 # Project Title:
 vehicle direction and hazard indicator controller.
 ## Project Description:
